@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言程序设计基础(2025秋)</title>
-    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
-    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）]]></content>
+    <title>Hello World</title>
+    <url>/2025/11/05/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server$ hexo server
+
+More info: Server
+Generate static files$ hexo generate
+
+More info: Generating
+Deploy to remote sites$ hexo deploy
+
+More info: Deployment
+]]></content>
   </entry>
   <entry>
     <title>翁恺C语言学习笔记</title>
@@ -1005,21 +1018,8 @@ int fact(int n)&#123;	if(n&lt;=1)&#123;		return 1;	&#125;else&#123;		return n*fa
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/11/05/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo server
-
-More info: Server
-Generate static files$ hexo generate
-
-More info: Generating
-Deploy to remote sites$ hexo deploy
-
-More info: Deployment
-]]></content>
+    <title>C语言程序设计基础(2025秋)</title>
+    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
+    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）]]></content>
   </entry>
 </search>
