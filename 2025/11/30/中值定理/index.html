@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>三大微分中值定理 | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="三大中值定理总结（含考研真题示例，每题1道例题）一、罗尔定理（Rolle’s Theorem）1. 核心定义若函数 $f(x)$ 满足 3个条件：  闭区间连续：$f(x) \in C[a,b]$（在$[a,b]$上连续）； 开区间可导：$f(x) \in D(a,b)$（在$(a,b)$内可导）； 端点值相等：$f(a) &#x3D; f(b)$；则存在 $\xi \in (a,b)$，使得 $">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三大微分中值定理">
+<meta property="og:url" content="https://yuhaolin-79.github.io/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/index.html">
+<meta property="og:site_name" content="fish的学习之旅~">
+<meta property="og:description" content="三大中值定理总结（含考研真题示例，每题1道例题）一、罗尔定理（Rolle’s Theorem）1. 核心定义若函数 $f(x)$ 满足 3个条件：  闭区间连续：$f(x) \in C[a,b]$（在$[a,b]$上连续）； 开区间可导：$f(x) \in D(a,b)$（在$(a,b)$内可导）； 端点值相等：$f(a) &#x3D; f(b)$；则存在 $\xi \in (a,b)$，使得 $">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
+<meta property="article:published_time" content="2025-11-30T13:32:48.000Z">
+<meta property="article:modified_time" content="2025-11-30T13:33:49.955Z">
+<meta property="article:author" content="鱼浩琳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "三大微分中值定理",
+  "url": "https://yuhaolin-79.github.io/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/",
+  "image": "https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg",
+  "datePublished": "2025-11-30T13:32:48.000Z",
+  "dateModified": "2025-11-30T13:33:49.955Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "鱼浩琳",
+      "url": "https://yuhaolin-79.github.io/true"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '三大微分中值定理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a><a class="nav-page-title" href="/"><span class="site-name">三大微分中值定理</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">三大微分中值定理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-11-30T13:33:49.955Z" title="Updated 2025-11-30 21:33:49">2025-11-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="三大中值定理总结（含考研真题示例，每题1道例题）"><a href="#三大中值定理总结（含考研真题示例，每题1道例题）" class="headerlink" title="三大中值定理总结（含考研真题示例，每题1道例题）"></a>三大中值定理总结（含考研真题示例，每题1道例题）</h3><h4 id="一、罗尔定理（Rolle’s-Theorem）"><a href="#一、罗尔定理（Rolle’s-Theorem）" class="headerlink" title="一、罗尔定理（Rolle’s Theorem）"></a>一、罗尔定理（Rolle’s Theorem）</h4><h5 id="1-核心定义"><a href="#1-核心定义" class="headerlink" title="1. 核心定义"></a>1. 核心定义</h5><p>若函数 $f(x)$ 满足 <strong>3个条件</strong>：</p>
+<ul>
+<li>闭区间连续：$f(x) \in C[a,b]$（在$[a,b]$上连续）；</li>
+<li>开区间可导：$f(x) \in D(a,b)$（在$(a,b)$内可导）；</li>
+<li>端点值相等：$f(a) &#x3D; f(b)$；<br>则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; 0$。</li>
+</ul>
+<p><strong>几何意义</strong>：连续可导曲线在区间端点函数值相等时，曲线上至少有一点的切线与x轴平行（水平切线）。</p>
+<h5 id="2-考研真题示例（2017年数学一-二-三）"><a href="#2-考研真题示例（2017年数学一-二-三）" class="headerlink" title="2. 考研真题示例（2017年数学一&#x2F;二&#x2F;三）"></a>2. 考研真题示例（2017年数学一&#x2F;二&#x2F;三）</h5><p>设函数 $f(x)$ 在$[0,1]$上连续，在$(0,1)$内可导，且 $f(1) &#x3D; 0$。证明：存在 $\xi \in (0,1)$，使得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。</p>
+<p><strong>证明步骤（可直接用于笔记&#x2F;答题）</strong>：</p>
+<ol>
+<li><strong>构造辅助函数</strong>：将待证式变形为 $\xi f’(\xi) + f(\xi) &#x3D; 0$，观察到左边是 $[x f(x)]’$ 的形式，故令 $F(x) &#x3D; x f(x)$。</li>
+<li><strong>验证罗尔定理条件</strong>：<ul>
+<li>连续性：$f(x)$ 连续、$x$ 连续，乘积 $F(x) \in C[0,1]$；</li>
+<li>可导性：乘积求导得 $F’(x) &#x3D; f(x) + x f’(x)$，故 $F(x) \in D(0,1)$；</li>
+<li>端点相等：$F(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$F(1) &#x3D; 1 \cdot f(1) &#x3D; 0$，即 $F(0) &#x3D; F(1)$。</li>
+</ul>
+</li>
+<li><strong>应用定理</strong>：由罗尔定理，存在 $\xi \in (0,1)$ 使得 $F’(\xi) &#x3D; 0$，即 $f(\xi) + \xi f’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。</li>
+</ol>
+<h4 id="二、拉格朗日中值定理（Lagrange’s-Mean-Value-Theorem）"><a href="#二、拉格朗日中值定理（Lagrange’s-Mean-Value-Theorem）" class="headerlink" title="二、拉格朗日中值定理（Lagrange’s Mean Value Theorem）"></a>二、拉格朗日中值定理（Lagrange’s Mean Value Theorem）</h4><h5 id="1-核心定义-1"><a href="#1-核心定义-1" class="headerlink" title="1. 核心定义"></a>1. 核心定义</h5><p>若函数 $f(x)$ 满足 <strong>2个条件</strong>：</p>
+<ul>
+<li>闭区间连续：$f(x) \in C[a,b]$；</li>
+<li>开区间可导：$f(x) \in D(a,b)$；<br>则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; \frac{f(b) - f(a)}{b - a}$。</li>
+</ul>
+<p><strong>几何意义</strong>：连续可导曲线在区间上至少有一点的切线与区间端点连线（割线）平行。</p>
+<p><strong>常用等价形式</strong>：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$（增量公式，可直接用于不等式证明、函数单调性判断）。</p>
+<h5 id="2-考研真题示例（2019年数学一）"><a href="#2-考研真题示例（2019年数学一）" class="headerlink" title="2. 考研真题示例（2019年数学一）"></a>2. 考研真题示例（2019年数学一）</h5><p>设函数 $f(x)$ 在$[0,1]$上具有二阶导数，且 $f(1) &#x3D; 0$。记 $g(x) &#x3D; x f(x)$，证明：存在 $\xi \in (0,1)$，使得 $g’’(\xi) &#x3D; 0$。</p>
+<p><strong>证明步骤（可直接用于笔记&#x2F;答题）</strong>：</p>
+<ol>
+<li><strong>第一步：对 $g(x)$ 用罗尔定理找 $g’(x)$ 的零点</strong>：<ul>
+<li>$g(x) &#x3D; x f(x)$，则 $g(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$g(1) &#x3D; 1 \cdot f(1) &#x3D; 0$；</li>
+<li>由罗尔定理，存在 $\eta \in (0,1)$ 使得 $g’(\eta) &#x3D; 0$。</li>
+</ul>
+</li>
+<li><strong>第二步：分析 $g’(x)$ 的表达式</strong>：<ul>
+<li>求导得 $g’(x) &#x3D; f(x) + x f’(x)$，因 $f(x)$ 二阶可导，故 $g’(x) \in C[0,\eta]$ 且 $g’(x) \in D(0,\eta)$（可导必连续）。</li>
+</ul>
+</li>
+<li><strong>第三步：对 $g’(x)$ 用罗尔定理</strong>：<ul>
+<li>代入 $x&#x3D;0$ 得 $g’(0) &#x3D; f(0) + 0 \cdot f’(0) &#x3D; f(0)$，结合 $g’(\eta) &#x3D; 0$，且 $g’(x)$ 可导，故存在 $\xi \in (0,\eta) \subset (0,1)$ 使得 $g’’(\xi) &#x3D; 0$。</li>
+</ul>
+</li>
+</ol>
+<p><strong>简化记忆</strong>：二阶导数为零的证明，常通过“对一阶导数用罗尔定理”，核心是找到一阶导数的两个零点。</p>
+<h4 id="三、柯西中值定理（Cauchy’s-Mean-Value-Theorem）"><a href="#三、柯西中值定理（Cauchy’s-Mean-Value-Theorem）" class="headerlink" title="三、柯西中值定理（Cauchy’s Mean Value Theorem）"></a>三、柯西中值定理（Cauchy’s Mean Value Theorem）</h4><h5 id="1-核心定义-2"><a href="#1-核心定义-2" class="headerlink" title="1. 核心定义"></a>1. 核心定义</h5><p>若函数 $f(x)$ 和 $g(x)$ 满足 <strong>4个条件</strong>：</p>
+<ul>
+<li>闭区间连续：$f(x), g(x) \in C[a,b]$；</li>
+<li>开区间可导：$f(x), g(x) \in D(a,b)$；</li>
+<li>导数不同时为零：对任意 $x \in (a,b)$，$f’(x)^2 + g’(x)^2 \neq 0$；</li>
+<li>端点函数值不等：$g(a) \neq g(b)$；<br>则存在 $\xi \in (a,b)$，使得 $\frac{f(b) - f(a)}{g(b) - g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$。</li>
+</ul>
+<p><strong>几何意义</strong>：以 $x$ 为参数的曲线 $\begin{cases} X &#x3D; g(x) \ Y &#x3D; f(x) \end{cases}$ 上，至少有一点的切线与区间端点连线（割线）平行。</p>
+<p><strong>特殊情况</strong>：当 $g(x) &#x3D; x$ 时，柯西中值定理退化为拉格朗日中值定理（故拉格朗日是柯西的特例）。</p>
+<h5 id="2-考研真题示例（2018年数学二）"><a href="#2-考研真题示例（2018年数学二）" class="headerlink" title="2. 考研真题示例（2018年数学二）"></a>2. 考研真题示例（2018年数学二）</h5><p>设函数 $f(x)$ 在$[a,b]$上连续，在$(a,b)$内可导，且 $f(a) &#x3D; f(b) &#x3D; 0$。证明：存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$（其中 $g(x)$ 在$[a,b]$上连续且不为零，$g’(x)$ 存在）。</p>
+<p><strong>证明步骤（可直接用于笔记&#x2F;答题）</strong>：</p>
+<ol>
+<li><strong>构造辅助函数</strong>：将待证式变形为 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，观察到左边是 $\left[ \frac{f(x)}{g(x)} \right]’$ 的分子（商的求导法则：$\left( \frac{f}{g} \right)’ &#x3D; \frac{f’g - fg’}{g^2}$），故令 $F(x) &#x3D; \frac{f(x)}{g(x)}$。</li>
+<li><strong>验证柯西中值定理条件</strong>：<ul>
+<li>连续性：$f(x)$ 连续、$g(x)$ 连续且不为零，故 $F(x) \in C[a,b]$；</li>
+<li>可导性：商的求导法则，$F’(x) &#x3D; \frac{f’(x) g(x) - f(x) g’(x)}{g^2(x)}$，故 $F(x) \in D(a,b)$；</li>
+<li>端点相等：$F(a) &#x3D; \frac{f(a)}{g(a)} &#x3D; 0$，$F(b) &#x3D; \frac{f(b)}{g(b)} &#x3D; 0$，即 $F(a) &#x3D; F(b)$。</li>
+</ul>
+</li>
+<li><strong>应用定理</strong>：由罗尔定理（或柯西中值定理，因 $g(x)$ 满足条件），存在 $\xi \in (a,b)$ 使得 $F’(\xi) &#x3D; 0$，即 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$。</li>
+</ol>
+<p><strong>关键技巧</strong>：柯西中值定理的核心是“构造商式辅助函数”，本质是解决“两个函数的增量比与导数比”的关系问题。</p>
+<h3 id="总结（便于笔记记忆）"><a href="#总结（便于笔记记忆）" class="headerlink" title="总结（便于笔记记忆）"></a>总结（便于笔记记忆）</h3><table>
+<thead>
+<tr>
+<th>定理</th>
+<th>核心条件</th>
+<th>核心结论</th>
+<th>考研常用技巧</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>罗尔定理</td>
+<td>连续、可导、端点值相等</td>
+<td>$f’(\xi) &#x3D; 0$</td>
+<td>构造辅助函数（乘积、加减）</td>
+</tr>
+<tr>
+<td>拉格朗日定理</td>
+<td>连续、可导</td>
+<td>$f’(\xi) &#x3D; \frac{f(b)-f(a)}{b-a}$</td>
+<td>增量公式、不等式证明</td>
+</tr>
+<tr>
+<td>柯西定理</td>
+<td>两函数连续、可导、$g(a) \neq g(b)$</td>
+<td>$\frac{f(b)-f(a)}{g(b)-g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$</td>
+<td>构造商式辅助函数</td>
+</tr>
+</tbody></table>
+<p><strong>共性</strong>：三大中值定理均是“连续+可导”的核心条件，本质是建立函数增量与导数的联系，考研重点在于“辅助函数构造”和“定理嵌套使用”（如拉格朗日定理嵌套罗尔定理）。</p>
+<h3 id="泰勒公式和中值定理的联系"><a href="#泰勒公式和中值定理的联系" class="headerlink" title="泰勒公式和中值定理的联系"></a>泰勒公式和中值定理的联系</h3><p>泰勒公式与三大中值定理（罗尔、拉格朗日、柯西）本质是 <strong>“局部近似”与“区间中值”的递进关系</strong>——泰勒公式是中值定理的“高阶推广”，中值定理是泰勒公式的“低阶特例”，核心联系如下：</p>
+<h4 id="1-拉格朗日中值定理是泰勒公式的1阶特例"><a href="#1-拉格朗日中值定理是泰勒公式的1阶特例" class="headerlink" title="1. 拉格朗日中值定理是泰勒公式的1阶特例"></a>1. 拉格朗日中值定理是泰勒公式的1阶特例</h4><p>泰勒公式（带拉格朗日余项）的一般形式：<br>$f(x) &#x3D; f(x_0) + f’(x_0)(x - x_0) + \frac{f’’(x_0)}{2!}(x - x_0)^2 + \dots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + R_n(x)$<br>其中拉格朗日余项 $R_n(x) &#x3D; \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}$（$\xi$ 在 $x_0$ 与 $x$ 之间）。</p>
+<p>当取 $n&#x3D;0$ 时（0阶泰勒公式）：<br>$f(x) &#x3D; f(x_0) + f’(\xi)(x - x_0)$<br>令 $x &#x3D; b$、$x_0 &#x3D; a$，即得拉格朗日中值定理：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$。</p>
+<h4 id="2-罗尔定理是泰勒公式的“特殊推论”"><a href="#2-罗尔定理是泰勒公式的“特殊推论”" class="headerlink" title="2. 罗尔定理是泰勒公式的“特殊推论”"></a>2. 罗尔定理是泰勒公式的“特殊推论”</h4><p>对1阶泰勒公式，若 $f(a) &#x3D; f(b)$，则：<br>$f(b) &#x3D; f(a) + f’(a)(b - a) + \frac{f’’(\xi)}{2!}(b - a)^2$<br>因 $f(a) &#x3D; f(b)$，整理得 $f’(a) + \frac{f’’(\xi)}{2!}(b - a) &#x3D; 0$——但更直接的逻辑是：罗尔定理是证明泰勒公式余项的“基础工具”（证明泰勒余项时，常构造辅助函数，对其应用罗尔定理推导余项形式）。</p>
+<h4 id="3-柯西中值定理与泰勒公式的“互补关系”"><a href="#3-柯西中值定理与泰勒公式的“互补关系”" class="headerlink" title="3. 柯西中值定理与泰勒公式的“互补关系”"></a>3. 柯西中值定理与泰勒公式的“互补关系”</h4><ul>
+<li>柯西中值定理聚焦 <strong>“两个函数的增量比与导数比”</strong>（解决比值型问题）；</li>
+<li>泰勒公式聚焦 <strong>“单个函数的高阶近似”</strong>（解决精度要求高的问题，如极限计算、不等式证明、高阶导数相关问题）。</li>
+</ul>
+<p>但二者本质一致：均依赖“函数连续可导”的条件，均通过“中值 $\xi$”建立函数与导数的联系，且柯西中值定理可作为证明泰勒公式的辅助工具（如推导柯西型余项时会用到）。</p>
+<h4 id="4-核心共性：“中值思想”的统一"><a href="#4-核心共性：“中值思想”的统一" class="headerlink" title="4. 核心共性：“中值思想”的统一"></a>4. 核心共性：“中值思想”的统一</h4><p>无论是中值定理还是泰勒公式，核心都是 <strong>“在区间内存在一点 $\xi$，将函数的整体增量（或近似误差）用某阶导数表示”</strong>——中值定理是“1阶导数的整体关联”，泰勒公式是“多阶导数的局部近似”，前者是后者的简化，后者是前者的深化。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href>鱼浩琳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://yuhaolin-79.github.io/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/">https://yuhaolin-79.github.io/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">本文版权归作者所有，转载请注明出处</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">C语言程序设计基础(2025秋)</div></div><div class="info-2"><div class="info-item-1">我的课程笔记 - C语言程序设计（2025秋） 请直接点击标题的C语言程序设计  </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E8%80%83%E7%A0%94%E7%9C%9F%E9%A2%98%E7%A4%BA%E4%BE%8B%EF%BC%8C%E6%AF%8F%E9%A2%981%E9%81%93%E4%BE%8B%E9%A2%98%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">三大中值定理总结（含考研真题示例，每题1道例题）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%97%E5%B0%94%E5%AE%9A%E7%90%86%EF%BC%88Rolle%E2%80%99s-Theorem%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、罗尔定理（Rolle’s Theorem）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 核心定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%80%83%E7%A0%94%E7%9C%9F%E9%A2%98%E7%A4%BA%E4%BE%8B%EF%BC%882017%E5%B9%B4%E6%95%B0%E5%AD%A6%E4%B8%80-%E4%BA%8C-%E4%B8%89%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 考研真题示例（2017年数学一&#x2F;二&#x2F;三）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%EF%BC%88Lagrange%E2%80%99s-Mean-Value-Theorem%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">二、拉格朗日中值定理（Lagrange’s Mean Value Theorem）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 核心定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%80%83%E7%A0%94%E7%9C%9F%E9%A2%98%E7%A4%BA%E4%BE%8B%EF%BC%882019%E5%B9%B4%E6%95%B0%E5%AD%A6%E4%B8%80%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 考研真题示例（2019年数学一）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9F%AF%E8%A5%BF%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%EF%BC%88Cauchy%E2%80%99s-Mean-Value-Theorem%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">三、柯西中值定理（Cauchy’s Mean Value Theorem）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 核心定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%80%83%E7%A0%94%E7%9C%9F%E9%A2%98%E7%A4%BA%E4%BE%8B%EF%BC%882018%E5%B9%B4%E6%95%B0%E5%AD%A6%E4%BA%8C%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 考研真题示例（2018年数学二）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%EF%BC%88%E4%BE%BF%E4%BA%8E%E7%AC%94%E8%AE%B0%E8%AE%B0%E5%BF%86%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">总结（便于笔记记忆）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E5%92%8C%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E7%9A%84%E8%81%94%E7%B3%BB"><span class="toc-number">3.</span> <span class="toc-text">泰勒公式和中值定理的联系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E6%98%AF%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%9A%841%E9%98%B6%E7%89%B9%E4%BE%8B"><span class="toc-number">3.1.</span> <span class="toc-text">1. 拉格朗日中值定理是泰勒公式的1阶特例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BD%97%E5%B0%94%E5%AE%9A%E7%90%86%E6%98%AF%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%9A%84%E2%80%9C%E7%89%B9%E6%AE%8A%E6%8E%A8%E8%AE%BA%E2%80%9D"><span class="toc-number">3.2.</span> <span class="toc-text">2. 罗尔定理是泰勒公式的“特殊推论”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9F%AF%E8%A5%BF%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86%E4%B8%8E%E6%B3%B0%E5%8B%92%E5%85%AC%E5%BC%8F%E7%9A%84%E2%80%9C%E4%BA%92%E8%A1%A5%E5%85%B3%E7%B3%BB%E2%80%9D"><span class="toc-number">3.3.</span> <span class="toc-text">3. 柯西中值定理与泰勒公式的“互补关系”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A0%B8%E5%BF%83%E5%85%B1%E6%80%A7%EF%BC%9A%E2%80%9C%E4%B8%AD%E5%80%BC%E6%80%9D%E6%83%B3%E2%80%9D%E7%9A%84%E7%BB%9F%E4%B8%80"><span class="toc-number">3.4.</span> <span class="toc-text">4. 核心共性：“中值思想”的统一</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/hello-world/" title="Hello World">Hello World</a><time datetime="2025-11-05T09:25:21.144Z" title="Created 2025-11-05 17:25:21">2025-11-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
