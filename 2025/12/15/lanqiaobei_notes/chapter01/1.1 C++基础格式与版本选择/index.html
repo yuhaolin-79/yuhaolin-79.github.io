@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>1.1 C++基础格式与版本选择 | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.1.1 C++版本区别与选择   C++版本 描述    C++98 (ISO&#x2F;IEC 14882:1998) C++的第一个版本于1998年10月发布。有一些较老的oj在使用。   C++03 (ISO&#x2F;IEC 14882:2003) 在这个版本的C++中，值初始化是在2003年2月引入的。   C++11（蓝桥杯选用） 它于2011年8月发布。这个C++修订版引入了La">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1.1 C++基础格式与版本选择">
+<meta property="og:url" content="https://yuhaolin-79.github.io/2025/12/15/lanqiaobei_notes/chapter01/1.1%20C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/index.html">
+<meta property="og:site_name" content="fish的学习之旅~">
+<meta property="og:description" content="1.1.1 C++版本区别与选择   C++版本 描述    C++98 (ISO&#x2F;IEC 14882:1998) C++的第一个版本于1998年10月发布。有一些较老的oj在使用。   C++03 (ISO&#x2F;IEC 14882:2003) 在这个版本的C++中，值初始化是在2003年2月引入的。   C++11（蓝桥杯选用） 它于2011年8月发布。这个C++修订版引入了La">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
+<meta property="article:published_time" content="2025-12-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-15T12:54:14.823Z">
+<meta property="article:author" content="鱼浩琳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/2025/12/15/lanqiaobei_notes/chapter01/1.1%20C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1.1 C++基础格式与版本选择',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">1.1 C++基础格式与版本选择</h1></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="1-1-1-C-版本区别与选择"><a href="#1-1-1-C-版本区别与选择" class="headerlink" title="1.1.1 C++版本区别与选择"></a>1.1.1 C++版本区别与选择</h1><table>
+<thead>
+<tr>
+<th>C++版本</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C++98 (ISO&#x2F;IEC 14882:1998)</td>
+<td>C++的第一个版本于1998年10月发布。有一些较老的oj在使用。</td>
+</tr>
+<tr>
+<td>C++03 (ISO&#x2F;IEC 14882:2003)</td>
+<td>在这个版本的C++中，值初始化是在2003年2月引入的。</td>
+</tr>
+<tr>
+<td>C++11（蓝桥杯选用）</td>
+<td>它于2011年8月发布。这个C++修订版引入了<code>Lambda</code>表达式、委托构造函数、统一初始化语法、自动类型推导<code>auto、nullptr、decltype、Rvalue References</code>等。</td>
+</tr>
+<tr>
+<td>C++14</td>
+<td>它于2014年8月发布。此版本中添加的功能包括多态<code>lambda</code>、数字分隔符、通用<code>lambda</code>捕获、变量模板、二进制整数文字、引用字符串等。</td>
+</tr>
+<tr>
+<td>C++17</td>
+<td>它于2017年12月发布。它引入了折叠表达式、十六进制浮点文字、u8字符文字、带有初始化程序的选择语句、内联变量等。</td>
+</tr>
+<tr>
+<td>C++20</td>
+<td>它于2020年12月发布。包括的一些新功能包括：测试宏3路比较、运算符<code>&lt;=&gt;</code>和运算符<code>==()=</code>默认值、新属性：<code>[no_unique_address]、[likely]、[太可能]</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>在蓝桥杯中使用C++11</strong></p>
+</blockquote>
+<h1 id="1-1-2-C-代码风格与语法基础"><a href="#1-1-2-C-代码风格与语法基础" class="headerlink" title="1.1.2 C++代码风格与语法基础"></a>1.1.2 C++代码风格与语法基础</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span> <span class="comment">//使用万能头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;<span class="comment">//使用标准命名空间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span><span class="comment">//main函数是C++中内置的启动函数，也就是程序入口</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span> &lt;&lt; endl;<span class="comment">//利用 cout 将字符串输出，字符串用双引号扩起 </span></span><br><span class="line">    <span class="comment">//&lt;&lt;是流插入运算符，将右侧内容输出到cout</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello, World!&quot;</span>);<span class="comment">//利用 printf 将字符串输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//函数遇到 return 会立刻结束。返回0表示main函数正常结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello, World! </span><br><span class="line">Hello, World!</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-1-3-基本数据类型"><a href="#1-1-3-基本数据类型" class="headerlink" title="1.1.3 基本数据类型"></a>1.1.3 基本数据类型</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span> <span class="comment">//使用万能头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span><span class="comment">//main函数是C++中内置的启动函数，也就是程序入口</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">3</span>;<span class="comment">//整数x</span></span><br><span class="line">    <span class="type">double</span> d = <span class="number">3.14</span>;<span class="comment">//浮点数（小数）d</span></span><br><span class="line">    <span class="type">char</span> ch = <span class="string">&#x27;A&#x27;</span>;<span class="comment">//字符ch</span></span><br><span class="line">    <span class="type">char</span> s[] = <span class="string">&quot;Hello&quot;</span>;<span class="comment">//字符串s</span></span><br><span class="line">    <span class="type">bool</span> b = <span class="literal">true</span>;<span class="comment">//布尔值（即真假值）b</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; x &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; <span class="comment">// &#x27;\n&#x27;是换行符号，比endl更快</span></span><br><span class="line">    cout &lt;&lt; d &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; ch &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//字符是用&#x27;&#x27;</span></span><br><span class="line">    cout &lt;&lt; s &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//字符串是用&quot;&quot;</span></span><br><span class="line">    cout &lt;&lt; s &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    cout &lt;&lt; b &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//实际上true是1 false是0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//函数遇到return会立刻结束。返回0表示main函数正常结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3.14</span><br><span class="line">A</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-1-4-手撕五份代码"><a href="#1-1-4-手撕五份代码" class="headerlink" title="1.1.4 手撕五份代码"></a>1.1.4 手撕五份代码</h1><h2 id="1-1-4-1-数组"><a href="#1-1-4-1-数组" class="headerlink" title="1.1.4-1 数组"></a>1.1.4-1 数组</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//const表示常量，后续不可被修改</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"><span class="type">int</span> a[N];<span class="comment">//开一个大小为N的全局数组，下标为[0, N - 1]，自动初始化为0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em><strong>注意：只有全局数组，会自动初始化为0，如果是局部变量是不会的，而且全局数组的内存空间不受函数栈大小限制，因此可以定义较大的数组（如<code>1e5</code>级别），而局部数组（定义在<code>main</code>内）受栈空间限制，过大可能导致栈溢出。</strong></em></p>
+</blockquote>
+<h2 id="1-1-4-2-typedef"><a href="#1-1-4-2-typedef" class="headerlink" title="1.1.4-2 typedef"></a>1.1.4-2 typedef</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;<span class="comment">//将long long类型定义为ll（方便后续使用）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//const表示常量，后续不可被修改</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">9</span>;</span><br><span class="line"><span class="comment">//开一个大小为N的全局数组（类型为long long），下标为[0, N - 1]，自动初始化为0</span></span><br><span class="line">ll a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-1-4-3-字符串"><a href="#1-1-4-3-字符串" class="headerlink" title="1.1.4-3 字符串"></a>1.1.4-3 字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span> <span class="comment">//使用万能头文件</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span><span class="comment">//main函数是C++中内置的启动函数，也就是程序入口</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">char</span> s[] = <span class="string">&quot;Hello&quot;</span>;<span class="comment">//长度为5的数组，下标区间为[0, 4]</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i &lt;= <span class="number">4</span>; ++ i)<span class="comment">//数组下标从0开始</span></span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; s[i];<span class="comment">//字符串s中下标为i的元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//换行</span></span><br><span class="line">    cout &lt;&lt; s &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//输出s（遇到\0就停下），并换行</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//函数遇到 return 会立刻结束。返回0表示main函数正常结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello </span><br><span class="line">Hello</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>for( ; ; )</code>循环，第一部分是初始化，第二部分是循环条件，第三部分是循环一遍就执行一次的语句</p>
+</blockquote>
+<h2 id="1-1-4-4-交换变量"><a href="#1-1-4-4-交换变量" class="headerlink" title="1.1.4-4 交换变量"></a>1.1.4-4 交换变量</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">5</span>, b = <span class="number">3</span>;<span class="comment">//初始化变量a，b</span></span><br><span class="line">    <span class="type">int</span> tmp = b;<span class="comment">//临时变量tmp</span></span><br><span class="line">    b = a;<span class="comment">//将a赋值给b</span></span><br><span class="line">    a = tmp;<span class="comment">//将tmp赋值给a</span></span><br><span class="line">    cout &lt;&lt; a &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; b &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;<span class="comment">//输出a，b</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-1-4-5-判断"><a href="#1-1-4-5-判断" class="headerlink" title="1.1.4-5 判断"></a>1.1.4-5 判断</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//输出1 ~ n中所有的偶数</span></span><br><span class="line">    <span class="type">int</span> n = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++ i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果后面不加大括号，则只执行一条语句</span></span><br><span class="line">        <span class="comment">//i % 2 == 0表示 i 除以 2 的余数为 0</span></span><br><span class="line">        <span class="keyword">if</span>(i % <span class="number">2</span> == <span class="number">0</span>)cout &lt;&lt; i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">4</span><br><span class="line">6</span><br><span class="line">8</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><em><strong>在没有{}时，<code>if</code>只执行紧跟的一条语句(以 ; 区分)，实际上，在算法竞赛中，这样写很常见，但是考虑实际可读性，希望养成写每一个{}的习惯</strong></em></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href>鱼浩琳</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://yuhaolin-79.github.io/2025/12/15/lanqiaobei_notes/chapter01/1.1%20C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/">https://yuhaolin-79.github.io/2025/12/15/lanqiaobei_notes/chapter01/1.1%20C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">本文版权归作者所有，转载请注明出处</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav id="pagination"><div class="pagination"></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-1-C-%E7%89%88%E6%9C%AC%E5%8C%BA%E5%88%AB%E4%B8%8E%E9%80%89%E6%8B%A9"><span class="toc-number">1.</span> <span class="toc-text">1.1.1 C++版本区别与选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-2-C-%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%E4%B8%8E%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">1.1.2 C++代码风格与语法基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-3-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">1.1.3 基本数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-4-%E6%89%8B%E6%92%95%E4%BA%94%E4%BB%BD%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">1.1.4 手撕五份代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-4-1-%E6%95%B0%E7%BB%84"><span class="toc-number">4.1.</span> <span class="toc-text">1.1.4-1 数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-4-2-typedef"><span class="toc-number">4.2.</span> <span class="toc-text">1.1.4-2 typedef</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-4-3-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.3.</span> <span class="toc-text">1.1.4-3 字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-4-4-%E4%BA%A4%E6%8D%A2%E5%8F%98%E9%87%8F"><span class="toc-number">4.4.</span> <span class="toc-text">1.1.4-4 交换变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-4-5-%E5%88%A4%E6%96%AD"><span class="toc-number">4.5.</span> <span class="toc-text">1.1.4-5 判断</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/lanqiaobei_notes/chapter01/index/" title="蓝桥杯备赛笔记-第一章 语言基础">蓝桥杯备赛笔记-第一章 语言基础</a><time datetime="2025-12-15T13:06:00.000Z" title="Created 2025-12-15 21:06:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/lanqiaobei_notes/index/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/lanqiaobei_notes/chapter01/1.1%20C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9/" title="1.1 C++基础格式与版本选择">1.1 C++基础格式与版本选择</a><time datetime="2025-12-14T16:00:00.000Z" title="Created 2025-12-15 00:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/lanqiaobei_notes/chapter01/1.2%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" title="1.2 输入输出">1.2 输入输出</a><time datetime="2025-12-14T16:00:00.000Z" title="Created 2025-12-15 00:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/lanqiaobei_notes/chapter01/1.3%20string%E7%9A%84%E4%BD%BF%E7%94%A8/" title="1.3 string的使用">1.3 string的使用</a><time datetime="2025-12-14T16:00:00.000Z" title="Created 2025-12-15 00:00:00">2025-12-15</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">编程竞赛</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/tags/C/" style="font-size: 1.1em; color: #999">C++</a> <a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">语言基础</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.5em; color: #99a9bf">蓝桥杯</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              December 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              November 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-12-15T13:11:23.305Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
