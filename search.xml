@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言程序设计基础(2025秋)</title>
-    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
-    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）
-请直接点击标题的C语言程序设计
-
-]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2025/11/05/hello-world/</url>
     <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
@@ -1133,6 +1125,25 @@ int fact(int n)&#123;	if(n&lt;=1)&#123;		return 1;	&#125;else&#123;		return n*fa
 以上程序实现了n的阶乘
 
 快速排序算法给出分治法(divide-and-conquer)的经典示例快速排序算法(quicksort)
+]]></content>
+  </entry>
+  <entry>
+    <title>C语言程序设计基础(2025秋)</title>
+    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
+    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）🌟 SCU程序设计基础-软件(2025秋)总览这里汇总了 SCU程序设计基础-软件(2025秋) 的历次作业题目和我的个人解答，点击标题可进入对应内容页面：
+必做
+必做07 
+必做08
+必做09
+
+选做
+选做01
+选做09
+
+
+
+📌 说明：所有笔记持续更新，点击链接直接跳转到对应页面，返回总览可点击顶部导航栏的“SCU程序设计基础-软件(2025秋)总览”。
+
 ]]></content>
   </entry>
 </search>
