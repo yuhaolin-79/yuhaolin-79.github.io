@@ -1,425 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/11/05/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server$ hexo server
-
-More info: Server
-Generate static files$ hexo generate
-
-More info: Generating
-Deploy to remote sites$ hexo deploy
-
-More info: Deployment
-]]></content>
-  </entry>
-  <entry>
-    <title>C语言历年期末真题(上半部分)</title>
-    <url>/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/</url>
-    <content><![CDATA[1: 最小的数描述给定0-9数字各若干个，以任意顺序排列这些数字，使得最后得到的数尽可能小（0 不能做首位）。
-输入在一行中给出 10 个非负整数，顺序表示数字 0、数字 1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不超过 50，且至少拥有 1 个非 0 的数字。
-输出在一行中输出能够组成的最小的数。
-样例输入
-2 2 0 0 0 3 0 0 1 0
-输出
-10015558
-
-代码#include&lt;stdio.h&gt;int main(void)&#123;    int digits[10];    for(int i = 0;i&lt;10;i++)&#123;        scanf(&quot;%d&quot;,&amp;digits[i]);    &#125;    for(int i = 1;i&lt;10;i++)&#123;        if(digits[i] &gt; 0)&#123;            printf(&quot;%d&quot;,i);            digits[i]--;            break;        &#125;    &#125;    for(int i = 0;i&lt;10;i++)&#123;        while(digits[i]&gt;0)&#123;            printf(&quot;%d&quot;,i);            digits[i]--;        &#125;    &#125;    printf(&quot;\n&quot;);    return 0;&#125;
-
-2: 不同的元素描述给定一个整型数组，统计不同的元素的个数。
-输入每组输入占一行，每先给出正整数 $n (n≤30)$，随后是 n 个整数 $a_i​ (−100≤a_i​≤100)$，以空格分隔。
-输出输出占一行，以回车结束。输出不同的元素的个数。
-样例1输入
-4 3 -5 2 8
-输出
-4
-样例2输入
-8 -5 8 8 8 8 8 8 -5
-输出
-2
-
-代码#include&lt;stdio.h&gt;int main(void)&#123;    int n;    scanf(&quot;%d&quot;,&amp;n);    int existed[30];    int cnt = 0;    for(int i = 0;i&lt;n;i++)&#123;        if(i == 0)&#123;            scanf(&quot;%d&quot;,&amp;existed[i]);            cnt++;        &#125;else&#123;            int num;            scanf(&quot;%d&quot;,&amp;num);            int found = 0;            for(int j = i;j&gt;=0;j--)&#123;                if(existed[j] == num)&#123;                    found = 1;                &#125;            &#125;            if(!found)&#123;                existed[i] = num;                cnt++;            &#125;else&#123;                existed[i] = 101;            &#125;        &#125;    &#125;    printf(&quot;%d&quot;,cnt);    return 0;&#125;
-
-3: 矩阵的幂描述给你一个$n∗n$的矩阵$A$，计算矩阵$A$的$k$次方，即计算
-$$\underbrace{A * A * \dots * A}_{k\text{个}}$$
-矩阵乘法的定义为：若$A,B,C$都是矩阵，$A∗B&#x3D;C$，那么有$$C_{i,j} &#x3D; \sum_{k&#x3D;0}^{n-1} \left(A_{i,k} * B_{k,j}\right)$$
-输入第一行为矩阵的阶数$n$，以及$k$次方。接下来$n$行，每行有$n$个数，分别用空格分开。代表矩阵$A$。其中$1≤n,k≤7$，且矩阵AA中每个元素满足 $1≤A_i,_j≤7$。
-输出输出一个$n∗n$的矩阵，代表计算结果
-样例输入
-3 22 1 52 5 77 3 3
-
-输出
-41 22 3263 48 6641 31 65
-
-代码#include&lt;stdio.h&gt;int main(void)&#123;    int n,k;    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);    long long matrix[7][7],res[7][7];    for(int i = 0;i&lt;n;i++)&#123;        for(int j = 0;j&lt;n;j++)&#123;            scanf(&quot;%d&quot;,&amp;matrix[i][j]);            res[i][j] = matrix[i][j];        &#125;    &#125;    long long temp[7][7];    if(k == 1)&#123;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                printf(&quot;%lld &quot;,res[i][j]);            &#125;            printf(&quot;\n&quot;);        &#125;        return 0;    &#125;    for(int step = 0;step&lt;k-1;step++)&#123;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                temp[i][j] = 0;            &#125;        &#125;        for(int row = 0;row&lt;n;row++)&#123;            for(int col = 0;col&lt;n;col++)&#123;                long long sum = 0;                for(int t=0;t&lt;n;t++)&#123;                    sum += res[row][t]*matrix[t][col];                &#125;                temp[row][col] = sum;            &#125;        &#125;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                res[i][j] = temp[i][j];            &#125;        &#125;    &#125;    for(int i = 0;i&lt;n;i++)&#123;        for(int j = 0;j&lt;n;j++)&#123;            printf(&quot;%lld &quot;,res[i][j]);        &#125;        printf(&quot;\n&quot;);    &#125;    return 0;&#125;
-
-4: 日期距离描述众所周知，日期有两种表示方法:MM&#x2F;DD&#x2F;YY或者YY&#x2F;MM&#x2F;DD.我们假设本题讨论的年份的格式都是20YY。
-给你一个字符串，如果它只能代表一个合法的日期，满足MM&#x2F;DD&#x2F;YY的格式或者是YY&#x2F;MM&#x2F;DD的格式，那么输出 “month date,year”的格式（见第二个样例），否则输出在这两种表示法下的日期差（见第一个样例）。
-
-提示1：一年有12个月，分别是January, February, March, April, May, June, July, August, September, October, November 和 December。
-
-提示2：注意闰年2月份有29天。闰年需要满足以下两个条件之一:
-
-年份是400的倍数。
-年份是4的倍数但年份不是100的倍数。
-
-
-
-输入一个时间字符串，格式为AA&#x2F;BB&#x2F;CC。保证AA&#x2F;BB&#x2F;CC至少满足两种表示法其中之一。
-输出见描述。
-样例输入
-02/07/1919/02/07
-
-输出
-6047February 7, 2019
-
-提示样例1：02/07/19可能是2019.2.7(采用MM&#x2F;DD&#x2F;YY表示法)或者是2002.7.19(采用YY&#x2F;MM&#x2F;DD表示法)。这两个日期相差6047天。
-样例2：19/02/07只能是2019.2.7(YY&#x2F;MM&#x2F;DD表示法)。也就是只能代表这一个日期，按照要求输出即可。
-代码#include &lt;stdlib.h&gt;#include &lt;string.h&gt;// 判定闰年int is_leap(int y) &#123;    return (y % 400 == 0 || (y % 4 == 0 &amp;&amp; y % 100 != 0));&#125;// 获取每月天数int get_month_days(int y, int m) &#123;    int ds[] = &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;    if (m == 2 &amp;&amp; is_leap(y)) return 29;    if (m &gt;= 1 &amp;&amp; m &lt;= 12) return ds[m];    return 0;&#125;// 验证日期合法性int is_valid(int y, int m, int d) &#123;    if (m &lt; 1 || m &gt; 12) return 0;    if (d &lt; 1 || d &gt; get_month_days(y, m)) return 0;    return 1;&#125;// 计算绝对天数long long to_abs_days(int y, int m, int d) &#123;    long long total = 0;    for (int i = 2000; i &lt; y; i++) &#123;        total += is_leap(i) ? 366 : 365;    &#125;    for (int i = 1; i &lt; m; i++) &#123;        total += get_month_days(y, i);    &#125;    total += d;    return total;&#125;char* months[] = &#123;&quot;&quot;, &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;,                   &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;&#125;;int main() &#123;    int a, b, c;    // 使用 scanf 处理前导零    if (scanf(&quot;%d/%d/%d&quot;, &amp;a, &amp;b, &amp;c) != 3) return 0;    // 格式1: MM/DD/YY -&gt; 20CC/A/B    int y1 = 2000 + c, m1 = a, d1 = b;    int v1 = is_valid(y1, m1, d1);    // 格式2: YY/MM/DD -&gt; 20A/B/C    int y2 = 2000 + a, m2 = b, d2 = c;    int v2 = is_valid(y2, m2, d2);    if (v1 &amp;&amp; v2) &#123;        // 如果两个日期其实是同一天        if (y1 == y2 &amp;&amp; m1 == m2 &amp;&amp; d1 == d2) &#123;            printf(&quot;%s %d, %d\n&quot;, months[m1], d1, y1);        &#125; else &#123;            // 计算差值            long long diff = to_abs_days(y1, m1, d1) - to_abs_days(y2, m2, d2);            if (diff &lt; 0) diff = -diff;            printf(&quot;%lld\n&quot;, diff);        &#125;    &#125; else if (v1) &#123;        // 只有 MM/DD/YY 合法        printf(&quot;%s %d, %d\n&quot;, months[m1], d1, y1);    &#125; else if (v2) &#123;        // 只有 YY/MM/DD 合法        printf(&quot;%s %d, %d\n&quot;, months[m2], d2, y2);    &#125;    return 0;&#125;
-
-5: 中值滤波描述中值滤波是对一个滑动窗口内的值进行排序，用其中值代替窗口中心点的原来值的滤波方法，它在抑制随机噪声的同时能有效保护原有信息。以一维信号的中值滤波举例。
-对序列80 120 90 200 100 110 150，假设滤波窗口宽度为5,那么有
-
-
-
-滤波窗口的子序列
-子序列排序
-待替换的值
-序列中值
-
-
-
-80 120 90 200 100
-80 90 100 120 200
-90
-100
-
-
-120 90 200 100 110
-90 100 110 120 200
-200
-110
-
-
-90 200 100 110 150
-90 100 110 150 200
-100
-110
-
-
-滤波窗口的值如果不够5个值那么不改变对应点的值， 比如左侧的80， 以它为中心的5个长度的窗口内没有5个数，所以这个点仍然是80不变。
-所以最后滤波结果是80 120 100 110 110 110 150。
-如果滤波窗口宽度为3，那么滤波结果是80 90 120 100 110 110 150。
-输入只包含一组数据。每组数据包括2行。第一行为2个整数w、n，w为滤波窗口宽度（必须是奇数），n表示后面有n个整数。第二行为待滤波的n个整数，各数之间用一个空格来间隔。
-输出输出滤波后的序列，各数之间用一个空格分隔，输出需占一行，结尾需换行。如果输入w不是奇数那么输出ERROR。
-样例输入
-3 51 3 9 2 85 51 3 9 2 84 51 3 9 2 8
-
-输出
-1 3 3 8 81 3 3 2 8ERROR
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int w,n;    cin &gt;&gt; w &gt;&gt; n;    //w是窗口宽度,n是数据量    if(w % 2 == 0)&#123;        cout &lt;&lt; &quot;ERROR&quot; &lt;&lt; &#x27;\n&#x27;;        return 0;    &#125;    vector&lt;int&gt; nums(n);    for(int i = 0;i&lt;n;i++)&#123;        cin &gt;&gt; nums[i];    &#125;    vector&lt;int&gt; res = nums;    int half = w/2;    for(int i = 0;i&lt;n;i++)&#123;        int left = i - half;        int right = i + half;        if(left &lt; 0 ||  right &gt;= n)&#123;            continue;        &#125;        vector&lt;int&gt; window;        for(int j = left;j&lt;=right;j++)&#123;            window.push_back(nums[j]);        &#125;        sort(window.begin(),window.end());        int midnum = window[half];        res[i] = midnum;    &#125;    for(int i = 0;i&lt;n;i++)&#123;        cout &lt;&lt; res[i] &lt;&lt; &#x27; &#x27;;    &#125;    cout &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
-
-6: 判断直角三角形描述输入三角形的3条边长， 判断三角形是否是直角三角形。
-输入第1行是一个整数n，表示随后有n组数据。每组数据占一行，包含3个整数代表3条边长(每个整数的平方能够用32位整数表示)，用空格分隔。
-输出每组输出占一行，如果是直角三角形输出Yes，不是则输出No。
-样例输入
-23 4 5   3 5 7
-
-输出
-YesNo
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int n;    cin &gt;&gt; n;    for(int i = 0;i&lt;n;i++)&#123;        int a,b,c;        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;        if(a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)&#123;            if(a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a)&#123;                cout &lt;&lt; &quot;Yes&quot; &lt;&lt; &#x27;\n&#x27;;            &#125;else&#123;                cout &lt;&lt; &quot;No&quot; &lt;&lt; &#x27;\n&#x27;;            &#125;        &#125;else&#123;            cout &lt;&lt; &quot;No&quot; &lt;&lt; &#x27;\n&#x27;;        &#125;    &#125;    return 0;&#125;
-
-7: 求绝对值最大的数描述求一组数据中绝对值最大的数输出。
-输入每行输入包含一个测试用例，第一个整数$m(1≤m≤20)$，表示随后有m个整数(能够用32位整数表示)，各数之间用空格分隔。
-输出每组输出占一行，输出绝对值最大的数。(不考虑最大值对应多个输入的情况)
-样例输入
-3 0 -2 1
-输出
--2
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int m;    cin &gt;&gt; m;    vector&lt;int&gt; nums(m);    for(int i = 0;i&lt;m;i++)&#123;        cin &gt;&gt; nums[i];    &#125;    int max = nums[0];    for(int i = 0;i&lt;m;i++)&#123;        if(abs(nums[i]) &gt; abs(max))&#123;            max = nums[i];        &#125;    &#125;    cout &lt;&lt; max &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
-
-8: 分解偶数描述任何大于 6 的偶数都可以分解成两个奇质数的和。输入 n，输出所有解，按小的在前，大的在后输出，不要重复。
-输入每行输入包含一个测试用例，输入一个整数 $n (n≤10000000)$。
-输出对符合要求的输入数据，依次输出所有解，每个解占一行，两个数用空格分隔。对输入不符合要求的数，则输出ERROR。
-样例输入
-10
-
-输出
-3 75 5
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int is_odd_prime(int num)&#123;    if(num &lt; 3) return 0;    if(num == 3) return 1;    if(num % 2 == 0) return 0;    for(int i = 3;i*i&lt;=num;i+=2)&#123;        if(num % i == 0)&#123;            return 0;        &#125;    &#125;    return 1;&#125;int main(void)&#123;    int n;    cin &gt;&gt; n;    if(n &lt;= 6 || n % 2 != 0)&#123;        cout &lt;&lt; &quot;ERROR&quot; &lt;&lt; &#x27;\n&#x27;;    &#125;else&#123;        for(int i = 3;i&lt;=n/2;i+=2)&#123;            int j = n - i;            if(is_odd_prime(i) &amp;&amp; is_odd_prime(j))&#123;                cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &#x27;\n&#x27;;            &#125;        &#125;    &#125;    return 0;&#125;
-
-9: 显示柱状图描述根据输入的数字和符号生成相应的柱状图显示。
-输入每个输入包含一个测试用例，第一个整数$m (1≤m≤20)$，表示随后有$m$组数据，每组数据由一个数字$n(−15≤n≤15)$和一个字符组成，每组数据之间用空格分隔。数字代表柱状图的高度，字母代表该柱使用的画图符号。如果数字后没有字母，默认该柱的画图符号使用加号+。
-输出每个柱之间用1个空格间隔，图的空白处用空格填充。用减号-表示x轴。正数柱状向上，负数柱状向下。
-样例输入
-6 1a 3 4b 2 -2 1
-
-输出
-    b        + b        + b +    a + b +   +-----------        +          +  
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;struct Column &#123;    int h;    char s;&#125;;int main(void)&#123;    int m;    cin &gt;&gt; m;    vector&lt;Column&gt; cols(m);    int max_h = 0,min_h = 0;    for(int i = 0;i&lt;m;i++)&#123;        cin &gt;&gt; cols[i].h;        char next = cin.peek();        while(next == &#x27; &#x27;)&#123;            cin.ignore();            next = cin.peek();        &#125;        if(next != EOF &amp;&amp; !isdigit(next) &amp;&amp; next != &#x27;-&#x27; &amp;&amp; next != &#x27;\n&#x27;)&#123;            cin &gt;&gt; cols[i].s;        &#125;else&#123;            cols[i].s = &#x27;+&#x27;;        &#125;        max_h = max(max_h,cols[i].h);        min_h = min(min_h,cols[i].h);    &#125;    //中间是空格    int width = 2*m - 1;    for(int k = max_h;k&gt;=1;k--)&#123;        string line = &quot;&quot;;        for(int i = 0;i&lt;m;i++)&#123;            if(cols[i].h &gt;= k) line += cols[i].s;            else line += &#x27; &#x27;;            if(i &lt; m-1) line += &#x27; &#x27;;        &#125;        while(!line.empty() &amp;&amp; line.back() == &#x27; &#x27;) line.pop_back();        if(!line.empty()) cout &lt;&lt; line &lt;&lt; &#x27;\n&#x27;;    &#125;    for(int i = 0;i&lt;width;i++)&#123;        cout &lt;&lt; &#x27;-&#x27;;    &#125;    cout &lt;&lt; &#x27;\n&#x27;;    for(int k = -1;k &gt;= min_h;k--)&#123;        string line = &quot;&quot;;        for(int i = 0;i&lt;m;i++)&#123;            if(cols[i].h &lt;= k) line += cols[i].s;            else line += &#x27; &#x27;;            if(i &lt; m-1) line += &#x27; &#x27;;        &#125;        while(!line.empty() &amp;&amp; line.back() == &#x27; &#x27;) line.pop_back();        if(!line.empty()) cout &lt;&lt; line &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
-
-10: 统计回文数描述输入一段文本，统计中间出现次数最多的回文数。回文数是类似12321，1221这样，顺序和逆序相同的十进制无符号整数，不考虑符号，长度至少为2，不能以0开始。另外，不考虑数的一部分，即abc1232abc中的232不是一个单独的数。(数据可能超过32位)
-输入输入数据为一段文本，可能包含若干行，直到文件末尾为止。即只有一组测试用例。
-输出对于每一组输入数据，输出出现次数最多的回文数和它出现的次数。如果有多个，按数字从小到大输出，每个数占一行。如果没有， 输出None。
-样例输入
-Thin34543king 121 is8 interesting121.I like121 thinking23.
-
-输出
-121 3
-
-提示本题虽然是找整数，但最好的方法是全部按字符串来处理。
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int is_palindrome(const string &amp;s)&#123;    if(s.length() &lt; 2 || s[0] == &#x27;0&#x27;) return 0;    int i = 0,j = s.length() - 1;    while(i &lt; j)&#123;        if(s[i++] != s[j--]) return 0;    &#125;    return 1;&#125;int cmp_num(const string &amp;a,const string &amp;b)&#123;    if(a.length() != b.length()) return a.length() &lt; b.length();    return a&lt;b;&#125;int main(void)&#123;    string line;    map&lt;string,int&gt; cnts;    while(getline(cin,line))&#123;        string curr_digit = &quot;&quot;;        for(int i = 0;i&lt;=line.length();i++)&#123;            if(i&lt;line.length() &amp;&amp; isdigit(line[i]))&#123;                curr_digit += line[i];            &#125;else&#123;                if(!curr_digit.empty())&#123;                    if(is_palindrome(curr_digit))&#123;                        cnts[curr_digit] ++;                    &#125;                    curr_digit = &quot;&quot;;                &#125;            &#125;        &#125;    &#125;    if(cnts.empty())&#123;        cout &lt;&lt; &quot;None&quot; &lt;&lt; &#x27;\n&#x27;;        return 0;    &#125;    int max_freq = 0;    for(auto const&amp; [num,freq] : cnts)&#123;        if(freq &gt; max_freq) max_freq = freq;    &#125;    vector&lt;string&gt; result;    for(auto const&amp;[num,freq]: cnts)&#123;        if(freq == max_freq)&#123;            result.push_back(num);        &#125;    &#125;    sort(result.begin(),result.end(),cmp_num);    for(const string&amp; s : result)&#123;        cout &lt;&lt; s &lt;&lt; &quot; &quot; &lt;&lt; max_freq &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
-
-11: 计算平方和描述输入 4 个十进制整数，计算它们的平方和并输出。
-输入输入 4 个十进制整数，范围是−10000~10000。
-输出输出它们的平方和。
-样例输入
-1 2 3 4
-
-输出
-30
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    long long a,b,c,d;    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;    cout &lt;&lt; a*a + b*b + c*c + d*d &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
-
-12: 数的表示描述任何一个正整数都可以用 22 的幂次方表示。例如 138&#x3D;27+23+21。
-请编程输出给定正整数的幂次表达式。
-输入输入 1 个十进制正整数，范围是1~100000。
-输出输出它的幂次表达式，按幂次降序排列。
-样例输入
-2
-
-输出
-2=2^1
-
-输入
-9
-
-输出
-9=2^3+2^0
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int num;    cin &gt;&gt; num;    int temp = num;    int res[32] = &#123;0&#125;;    int cnt = 0;    while(temp &gt; 0)&#123;        res[cnt++] = temp % 2;        temp &gt;&gt;= 1;    &#125;    int need_plus = 0;    cout &lt;&lt; num &lt;&lt; &#x27;=&#x27;;    for(int i = cnt-1;i&gt;=0;i--)&#123;        if(res[i] == 1)&#123;            if(need_plus)&#123;                cout &lt;&lt; &#x27;+&#x27;;            &#125;            cout &lt;&lt; 2 &lt;&lt; &#x27;^&#x27; &lt;&lt; i;            need_plus = 1;        &#125;    &#125;    return 0;&#125;
-
-13: 对称子串描述有两个字符串S1,S2，请编程检测S2是否在S1中对称出现(S2正串一定要在S2反串前面)，并输出最大对称间隔。
-例如：
-S1 &#x3D; fabcdhba, S2 &#x3D; ab，其中，ab...ba称为S2在S1中对称出现了1次，S2正串为ab，S2反串为ba，对称间隔为3。S1 &#x3D; abcdhbaghba, S2&#x3D;ab，其中，ab...ba..ba称为S2在S1中对称出现了2次，对称间隔为3和7。
-如果S2对称出现多次，则输出最大间隔。
-注意：如果S2和S2的反串有部分重叠，那么间隔是负数。
-输入输入两个字符串S1,S2，以空格分开，字符串内部没有空格。
-S1长度不超过300，S2的长度不超过10。
-输出输出S2最大对称间隔。
-如果没有对称出现的S2出现，则输出no。
-样例输入
-abcdhba abcd
-
-输出
-no
-
-输入
-abcdhbaghba ab
-
-输出
-7
-
-代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    string s1,s2;    cin &gt;&gt; s1 &gt;&gt; s2;    string s2_rev = s2;    reverse(s2_rev.begin(),s2_rev.end());    vector&lt;int&gt; pos1;//正串出现的位置    vector&lt;int&gt; pos2;//反串    int found = (int)s1.find(s2);    while(found != string::npos)&#123;        pos1.push_back(found);        found = (int)s1.find(s2,found+1);    &#125;    found = (int)s1.find(s2_rev);    while(found != string::npos)&#123;        pos2.push_back(found);        found = (int)s1.find(s2_rev,found+1);    &#125;    int found_pair = 0;    int max_dist = -10000;//初始化为极小值    int len2 = s2.length();    for(int i : pos1)&#123;        for(int j : pos2)&#123;            if(j &gt; i)&#123;                found_pair = 1;                int curr_dist = j - (i + len2);                if(curr_dist &gt; max_dist)&#123;                    max_dist = curr_dist;                &#125;            &#125;        &#125;    &#125;    if(!found_pair)&#123;        cout &lt;&lt; &quot;no\n&quot;;    &#125;else&#123;        cout &lt;&lt; max_dist &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
-
-14: 走迷宫描述给一个 $N×M$ 的字符矩阵 $S，S_i,_j∈{U,D,L,R}$。
-设当前位置为 $(x,y)$，定义一次移动为：
-
-若  $S_x,_y​&#x3D;U$，则向上移动到 $(x−1,y)$ ，若  $x&#x3D;1$，则移动到 $(N,y)$。
-若  $S_x,_y​&#x3D;D$，则向下移动到 $(x+1,y)$，若  $x&#x3D;N$，则移动到 $(1,y)$。
-若  $S_x,_y​&#x3D;L$，则向左移动到 $(x,y−1)$，若 $y&#x3D;1$，则移动到 $(x,M)$。
-若  $S_x,_y​&#x3D;R$，则向右移动到 $(x,y+1)$，若 $y&#x3D;M$，则移动到 $(x,1)$。
-
-有 Q 次询问。
-每次询问给出一个初始坐标 $(x_0​,y_0​)$，和移动次数 step，回答经过 step 次移动后到达的坐标。
-限制时间限制 $1s$，空间限制 $256M$
-$1≤N,M,Q≤50$$Si,j∈{U,D,L,R}(1≤i≤N,1≤j≤M)$$1≤x_0≤N$$1≤y_0≤M$$1≤step≤3000$
-输入第一行输入 $N,M$。接下来有 $N$ 行，每行有 $M$ 个字符，字符取值范围为 $U,D,L,R$。接下来一行输入 $Q$。接下来有 $Q$ 行，每行输入 $x_0,y_0,step$。
-输出对于每个询问，输出答案，每行输出两个整数，表示坐标。
-样例输入
-5 5UDRRULRDDLDLUUDRULLRUDURU51 1 12 1 23 3 104 2 993 5 3000
-
-输出
-5 12 43 34 13 2
-
-解释对于第 11 次询问，(1,1)(1,1) 向上移动一次到达 (5,1)(5,1)对于第 22 次询问，(2,1)(2,1) 向左移动一次到达 (2,5)(2,5)，向左移动一次到达 (2,4)(2,4)对于第 33 次询问，路径为 (3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3)(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3)
-代码#include&lt;stdio.h&gt;#include&lt;string.h&gt;char op[50][50];int main(void)&#123;    int N,M;    scanf(&quot;%d %d&quot;,&amp;N,&amp;M);    for(int i = 0;i&lt;N;i++)&#123;        scanf(&quot;%s&quot;,op[i]);    &#125;    int Q;    scanf(&quot;%d&quot;,&amp;Q);    for(int k = 0;k&lt;Q;k++)&#123;        int x,y,step;        scanf(&quot;%d %d %d&quot;,&amp;x,&amp;y,&amp;step);        //1-base转0-base        x -= 1;        y -= 1;        for(int s = 0;s &lt; step;s++)&#123;            if(op[x][y] == &#x27;U&#x27;)&#123;                if(x == 0)&#123;                    x = N - 1;                &#125;else&#123;                    x -= 1;                &#125;            &#125;else if(op[x][y] == &#x27;D&#x27;)&#123;                if(x == N-1)&#123;                    x = 0;                &#125;else&#123;                    x += 1;                &#125;            &#125;else if(op[x][y] == &#x27;L&#x27;)&#123;                if(y == 0)&#123;                    y = M - 1;                &#125;else&#123;                    y -= 1;                &#125;            &#125;else if(op[x][y] == &#x27;R&#x27;)&#123;                if(y == M-1)&#123;                    y = 0;                &#125;else&#123;                    y += 1;                &#125;            &#125;else&#123;                continue;            &#125;        &#125;        printf(&quot;%d %d\n&quot;,x+1,y+1);    &#125;    return 0;&#125;
-
-15: 排名计算描述ICPC竞赛需要依据参赛选手的代码提交来进行排名，参赛选手的代码提交后，有以下几种状态：AC、WA、PE、RE、TE、ME、OE、CE，其中只有 AC代表题目顺利通过。对于每一次提交，如果你是第一次通过该题（状态为 AC），那么你通过的题目数加1，并且将你通过的时间（距离竞赛开始经过了多长时间，注：这里为了简化以分钟数计算）计入罚时。除此之外罚时还会加上你第一次通过之前的尝试次数×20。对于某一时刻t，所有参赛队伍在该时刻t之前(包括时刻t)的提交会被统计为通过题目数和罚时。
-比较A、B两只队伍的排名，优先比较通过题目数（通过题目数越多排名越前），通过题目数相同时比较罚时（罚时越低排名越前），前两者都相同则比较队伍的id（id小的排名越前）。
-现在总共有q次询问，每次询问想要在t时刻根据队伍id或队伍名字查询队伍的排名信息（队伍名字不唯一，但队伍id唯一，若查询队伍名字则需将名字相同的所有队伍信息由排名从高至低依次输出）。
-注意：
-
-状态为 CE 的提交是不会被计算进尝试次数。
-只有当一个队伍 AC 一道题时，该题的罚时才会被计算。如果该题最终也未 AC，那么该题的罚时是不会被计算。
-如果有人在 AC 后又提交了错误代码，这种罚时也是不会被计算。
-该题中，比赛题目总数量为10。
-比赛的时间范围是09:00 ~ 14:00
-
-举个例子：小明在 10:00 时首次通过了题目B，且它在此之前提交了3次 (WA、CE、RE), 那么该题的罚时为 60+2×20&#x3D;100。
-但在 09:59 时，该题没有通过，所以也没有罚时。
-输入第一行是三个整数$1≤n≤500,1≤m≤50,1≤q≤200$ 分别代表提交次数、队伍总数和询问次数。
-接下来m行每行1个整数tid和一个字符串name，$1≤tid≤m,∣name∣≤20$分别表示队伍的id和该队伍的名字（每只队伍的id均不相同，名字均由小写字母组成且长度小于20）。
-接下来n行由tid,pid,s,t组成, tid代表提交的队伍id (1≤tid≤m), pid代表提交的题目id (1≤pid≤10), s代表评测状态(s ∈{ AC、WA、PE、RE、TE、ME、OE、CE}), t 代表提交时间，格式为 xx:xx 。
-输入保证每条提交记录是按照时间顺序给出，且不会有队伍在相同时间有超过一次的提交记录。
-接下来q行，每行包含3个字段，前两个数type,t分别表示查询的类型type∈{0,1}和查询的时刻t，格式 xx:xx (09:00 ~ 14:00)。
-
-当 type&#x3D;0时，按队伍id查询，输入的第三个数为要查询的队伍号。
-当 type&#x3D;1时，按队伍名查询，输入的第三个字符串为要查询的队伍名字。
-
-输出对每次查询，输出查询结果，每支队伍的信息占一行，包括队伍的排名、队伍的tid、队伍的name、队伍通过题目数量和队伍的总罚时。如果有多支队伍符合条件，按照排名顺序依次输出。
-样例输入
-5 3 31 yyds2 yyds3 ysqd1 1 WA 09:542 1 AC 10:131 1 AC 10:141 3 AC 11:112 2 CE 12:001 09:01 yyds0 10:14 11 12:00 yyds
-
-输出
-1 1 yyds 0 02 2 yyds 0 02 1 yyds 1 941 1 yyds 2 2252 2 yyds 1 73
-
-提示共有三个查询：
-第一个查询在09:01查询队伍名称为yyds的队伍的排名情况，队伍1与队伍2名字均为yyds且此时均未通过任何题目，所以依次输出两队信息。
-第二个查询在10:14查询队伍id&#x3D;1的排名信息，此时队伍id&#x3D;1通过题目数1，罚时74+20&#x3D;94。队伍id&#x3D;2通过题目数1，罚时73。故队伍id&#x3D;1此时排名为2。
-第三个查询同理可知队伍id&#x3D;1通过题目数2,罚时74+20+131&#x3D;225。队伍id&#x3D;2通过题目数1，罚时73，按照排名依次输出即可。
-代码#include &lt;vector&gt;#include &lt;string&gt;#include &lt;algorithm&gt;#include &lt;map&gt;using namespace std;// 时间转换函数：将 hh:mm 转为相对于 09:00 的分钟数int toMin(string s) &#123;    int h = stoi(s.substr(0, 2));    int m = stoi(s.substr(3, 2));    return (h - 9) * 60 + m;&#125;struct Team &#123;    int id;    string name;    int solved = 0;    int penalty = 0;    int rank = 0;&#125;;struct Submission &#123;    int tid, pid, time;    string status;&#125;;struct Node &#123;    bool is_ac = false;    int fail_count = 0;    int ac_time = 0;&#125;;int main() &#123;    int n, m, q;    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;    vector&lt;Team&gt; teams(m + 1);    for (int i = 0; i &lt; m; ++i) &#123;        int tid;        string name;        cin &gt;&gt; tid &gt;&gt; name;        teams[tid].id = tid;        teams[tid].name = name;    &#125;    vector&lt;Submission&gt; subs(n);    for (int i = 0; i &lt; n; ++i) &#123;        string t_str;        cin &gt;&gt; subs[i].tid &gt;&gt; subs[i].pid &gt;&gt; subs[i].status &gt;&gt; t_str;        subs[i].time = toMin(t_str);    &#125;    while (q--) &#123;        int type;        string query_t_str;        cin &gt;&gt; type &gt;&gt; query_t_str;        int query_t = toMin(query_t_str);        // 统计 query_t 时刻前所有队伍的状态        vector&lt;vector&lt;Node&gt;&gt; stat(m + 1, vector&lt;Node&gt;(11));        for (int i = 0; i &lt; n; ++i) &#123;            if (subs[i].time &gt; query_t) continue;            int tid = subs[i].tid;            int pid = subs[i].pid;            if (stat[tid][pid].is_ac) continue; // AC后不再统计            if (subs[i].status == &quot;AC&quot;) &#123;                stat[tid][pid].is_ac = true;                stat[tid][pid].ac_time = subs[i].time;            &#125; else if (subs[i].status != &quot;CE&quot;) &#123;                stat[tid][pid].fail_count++;            &#125;        &#125;        // 计算罚时和解题数        vector&lt;Team&gt; rank_list;        for (int i = 1; i &lt;= m; ++i) &#123;            Team t = teams[i];            t.solved = 0;            t.penalty = 0;            for (int p = 1; p &lt;= 10; ++p) &#123;                if (stat[i][p].is_ac) &#123;                    t.solved++;                    t.penalty += stat[i][p].ac_time + stat[i][p].fail_count * 20;                &#125;            &#125;            rank_list.push_back(t);        &#125;        // 排序规则        sort(rank_list.begin(), rank_list.end(), [](const Team&amp; a, const Team&amp; b) &#123;            if (a.solved != b.solved) return a.solved &gt; b.solved;            if (a.penalty != b.penalty) return a.penalty &lt; b.penalty;            return a.id &lt; b.id;        &#125;);        // 标记排名        for (int i = 0; i &lt; m; ++i) &#123;            rank_list[i].rank = i + 1;        &#125;        // 处理查询        if (type == 0) &#123;            int q_tid;            cin &gt;&gt; q_tid;            for (auto&amp; t : rank_list) &#123;                if (t.id == q_tid) &#123;                    cout &lt;&lt; t.rank &lt;&lt; &quot; &quot; &lt;&lt; t.id &lt;&lt; &quot; &quot; &lt;&lt; t.name &lt;&lt; &quot; &quot; &lt;&lt; t.solved &lt;&lt; &quot; &quot; &lt;&lt; t.penalty &lt;&lt; endl;                    break;                &#125;            &#125;        &#125; else &#123;            string q_name;            cin &gt;&gt; q_name;            for (auto&amp; t : rank_list) &#123;                if (t.name == q_name) &#123;                    cout &lt;&lt; t.rank &lt;&lt; &quot; &quot; &lt;&lt; t.id &lt;&lt; &quot; &quot; &lt;&lt; t.name &lt;&lt; &quot; &quot; &lt;&lt; t.solved &lt;&lt; &quot; &quot; &lt;&lt; t.penalty &lt;&lt; endl;                &#125;            &#125;        &#125;    &#125;    return 0;&#125;]]></content>
-  </entry>
-  <entry>
-    <title>C语言程序设计基础(2025秋)</title>
-    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
-    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）🌟 SCU程序设计基础-软件(2025秋)总览这里汇总了 SCU程序设计基础-软件(2025秋) 的历次作业题目和我的个人解答，点击标题可进入对应内容页面：
-必做
-必做07 
-必做08
-必做09
-
-选做
-选做01
-选做09
-
-
-
-📌 说明：所有笔记持续更新，点击链接直接跳转到对应页面，返回总览可点击顶部导航栏的“SCU程序设计基础-软件(2025秋)总览”。
-
-]]></content>
-  </entry>
-  <entry>
-    <title>三大微分中值定理</title>
-    <url>/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/</url>
-    <content><![CDATA[三大中值定理总结（含考研真题示例，每题1道例题）一、罗尔定理（Rolle’s Theorem）1. 核心定义若函数 $f(x)$ 满足 3个条件：
-
-闭区间连续：$f(x) \in C[a,b]$（在$[a,b]$上连续）；
-开区间可导：$f(x) \in D(a,b)$（在$(a,b)$内可导）；
-端点值相等：$f(a) &#x3D; f(b)$；则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; 0$。
-
-几何意义：连续可导曲线在区间端点函数值相等时，曲线上至少有一点的切线与x轴平行（水平切线）。
-2. 考研真题示例（2017年数学一&#x2F;二&#x2F;三）设函数 $f(x)$ 在$[0,1]$上连续，在$(0,1)$内可导，且 $f(1) &#x3D; 0$。证明：存在 $\xi \in (0,1)$，使得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。
-证明步骤（可直接用于笔记&#x2F;答题）：
-
-构造辅助函数：将待证式变形为 $\xi f’(\xi) + f(\xi) &#x3D; 0$，观察到左边是 $[x f(x)]’$ 的形式，故令 $F(x) &#x3D; x f(x)$。
-验证罗尔定理条件：
-连续性：$f(x)$ 连续、$x$ 连续，乘积 $F(x) \in C[0,1]$；
-可导性：乘积求导得 $F’(x) &#x3D; f(x) + x f’(x)$，故 $F(x) \in D(0,1)$；
-端点相等：$F(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$F(1) &#x3D; 1 \cdot f(1) &#x3D; 0$，即 $F(0) &#x3D; F(1)$。
-
-
-应用定理：由罗尔定理，存在 $\xi \in (0,1)$ 使得 $F’(\xi) &#x3D; 0$，即 $f(\xi) + \xi f’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。
-
-二、拉格朗日中值定理（Lagrange’s Mean Value Theorem）1. 核心定义若函数 $f(x)$ 满足 2个条件：
-
-闭区间连续：$f(x) \in C[a,b]$；
-开区间可导：$f(x) \in D(a,b)$；则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; \frac{f(b) - f(a)}{b - a}$。
-
-几何意义：连续可导曲线在区间上至少有一点的切线与区间端点连线（割线）平行。
-常用等价形式：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$（增量公式，可直接用于不等式证明、函数单调性判断）。
-2. 考研真题示例（2019年数学一）设函数 $f(x)$ 在$[0,1]$上具有二阶导数，且 $f(1) &#x3D; 0$。记 $g(x) &#x3D; x f(x)$，证明：存在 $\xi \in (0,1)$，使得 $g’’(\xi) &#x3D; 0$。
-证明步骤（可直接用于笔记&#x2F;答题）：
-
-第一步：对 $g(x)$ 用罗尔定理找 $g’(x)$ 的零点：
-$g(x) &#x3D; x f(x)$，则 $g(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$g(1) &#x3D; 1 \cdot f(1) &#x3D; 0$；
-由罗尔定理，存在 $\eta \in (0,1)$ 使得 $g’(\eta) &#x3D; 0$。
-
-
-第二步：分析 $g’(x)$ 的表达式：
-求导得 $g’(x) &#x3D; f(x) + x f’(x)$，因 $f(x)$ 二阶可导，故 $g’(x) \in C[0,\eta]$ 且 $g’(x) \in D(0,\eta)$（可导必连续）。
-
-
-第三步：对 $g’(x)$ 用罗尔定理：
-代入 $x&#x3D;0$ 得 $g’(0) &#x3D; f(0) + 0 \cdot f’(0) &#x3D; f(0)$，结合 $g’(\eta) &#x3D; 0$，且 $g’(x)$ 可导，故存在 $\xi \in (0,\eta) \subset (0,1)$ 使得 $g’’(\xi) &#x3D; 0$。
-
-
-
-简化记忆：二阶导数为零的证明，常通过“对一阶导数用罗尔定理”，核心是找到一阶导数的两个零点。
-三、柯西中值定理（Cauchy’s Mean Value Theorem）1. 核心定义若函数 $f(x)$ 和 $g(x)$ 满足 4个条件：
-
-闭区间连续：$f(x), g(x) \in C[a,b]$；
-开区间可导：$f(x), g(x) \in D(a,b)$；
-导数不同时为零：对任意 $x \in (a,b)$，$f’(x)^2 + g’(x)^2 \neq 0$；
-端点函数值不等：$g(a) \neq g(b)$；则存在 $\xi \in (a,b)$，使得 $\frac{f(b) - f(a)}{g(b) - g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$。
-
-几何意义：以 $x$ 为参数的曲线 $\begin{cases} X &#x3D; g(x) \ Y &#x3D; f(x) \end{cases}$ 上，至少有一点的切线与区间端点连线（割线）平行。
-特殊情况：当 $g(x) &#x3D; x$ 时，柯西中值定理退化为拉格朗日中值定理（故拉格朗日是柯西的特例）。
-2. 考研真题示例（2018年数学二）设函数 $f(x)$ 在$[a,b]$上连续，在$(a,b)$内可导，且 $f(a) &#x3D; f(b) &#x3D; 0$。证明：存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$（其中 $g(x)$ 在$[a,b]$上连续且不为零，$g’(x)$ 存在）。
-证明步骤（可直接用于笔记&#x2F;答题）：
-
-构造辅助函数：将待证式变形为 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，观察到左边是 $\left[ \frac{f(x)}{g(x)} \right]’$ 的分子（商的求导法则：$\left( \frac{f}{g} \right)’ &#x3D; \frac{f’g - fg’}{g^2}$），故令 $F(x) &#x3D; \frac{f(x)}{g(x)}$。
-验证柯西中值定理条件：
-连续性：$f(x)$ 连续、$g(x)$ 连续且不为零，故 $F(x) \in C[a,b]$；
-可导性：商的求导法则，$F’(x) &#x3D; \frac{f’(x) g(x) - f(x) g’(x)}{g^2(x)}$，故 $F(x) \in D(a,b)$；
-端点相等：$F(a) &#x3D; \frac{f(a)}{g(a)} &#x3D; 0$，$F(b) &#x3D; \frac{f(b)}{g(b)} &#x3D; 0$，即 $F(a) &#x3D; F(b)$。
-
-
-应用定理：由罗尔定理（或柯西中值定理，因 $g(x)$ 满足条件），存在 $\xi \in (a,b)$ 使得 $F’(\xi) &#x3D; 0$，即 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$。
-
-关键技巧：柯西中值定理的核心是“构造商式辅助函数”，本质是解决“两个函数的增量比与导数比”的关系问题。
-总结（便于笔记记忆）
-
-
-定理
-核心条件
-核心结论
-考研常用技巧
-
-
-
-罗尔定理
-连续、可导、端点值相等
-$f’(\xi) &#x3D; 0$
-构造辅助函数（乘积、加减）
-
-
-拉格朗日定理
-连续、可导
-$f’(\xi) &#x3D; \frac{f(b)-f(a)}{b-a}$
-增量公式、不等式证明
-
-
-柯西定理
-两函数连续、可导、$g(a) \neq g(b)$
-$\frac{f(b)-f(a)}{g(b)-g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$
-构造商式辅助函数
-
-
-共性：三大中值定理均是“连续+可导”的核心条件，本质是建立函数增量与导数的联系，考研重点在于“辅助函数构造”和“定理嵌套使用”（如拉格朗日定理嵌套罗尔定理）。
-泰勒公式和中值定理的联系泰勒公式与三大中值定理（罗尔、拉格朗日、柯西）本质是 “局部近似”与“区间中值”的递进关系——泰勒公式是中值定理的“高阶推广”，中值定理是泰勒公式的“低阶特例”，核心联系如下：
-1. 拉格朗日中值定理是泰勒公式的1阶特例泰勒公式（带拉格朗日余项）的一般形式：$f(x) &#x3D; f(x_0) + f’(x_0)(x - x_0) + \frac{f’’(x_0)}{2!}(x - x_0)^2 + \dots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + R_n(x)$其中拉格朗日余项 $R_n(x) &#x3D; \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}$（$\xi$ 在 $x_0$ 与 $x$ 之间）。
-当取 $n&#x3D;0$ 时（0阶泰勒公式）：$f(x) &#x3D; f(x_0) + f’(\xi)(x - x_0)$令 $x &#x3D; b$、$x_0 &#x3D; a$，即得拉格朗日中值定理：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$。
-2. 罗尔定理是泰勒公式的“特殊推论”对1阶泰勒公式，若 $f(a) &#x3D; f(b)$，则：$f(b) &#x3D; f(a) + f’(a)(b - a) + \frac{f’’(\xi)}{2!}(b - a)^2$因 $f(a) &#x3D; f(b)$，整理得 $f’(a) + \frac{f’’(\xi)}{2!}(b - a) &#x3D; 0$——但更直接的逻辑是：罗尔定理是证明泰勒公式余项的“基础工具”（证明泰勒余项时，常构造辅助函数，对其应用罗尔定理推导余项形式）。
-3. 柯西中值定理与泰勒公式的“互补关系”
-柯西中值定理聚焦 “两个函数的增量比与导数比”（解决比值型问题）；
-泰勒公式聚焦 “单个函数的高阶近似”（解决精度要求高的问题，如极限计算、不等式证明、高阶导数相关问题）。
-
-但二者本质一致：均依赖“函数连续可导”的条件，均通过“中值 $\xi$”建立函数与导数的联系，且柯西中值定理可作为证明泰勒公式的辅助工具（如推导柯西型余项时会用到）。
-4. 核心共性：“中值思想”的统一无论是中值定理还是泰勒公式，核心都是 “在区间内存在一点 $\xi$，将函数的整体增量（或近似误差）用某阶导数表示”——中值定理是“1阶导数的整体关联”，泰勒公式是“多阶导数的局部近似”，前者是后者的简化，后者是前者的深化。
-]]></content>
-  </entry>
-  <entry>
     <title>翁恺C语言学习笔记</title>
     <url>/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[这是我学习C语言的笔记
@@ -1419,6 +1000,315 @@ int fact(int n)&#123;	if(n&lt;=1)&#123;		return 1;	&#125;else&#123;		return n*fa
 ]]></content>
   </entry>
   <entry>
+    <title>C语言程序设计基础(2025秋)</title>
+    <url>/2025/11/29/SCU_C_Programming_2025_fall/</url>
+    <content><![CDATA[我的课程笔记 - C语言程序设计（2025秋）🌟 SCU程序设计基础-软件(2025秋)总览这里汇总了 SCU程序设计基础-软件(2025秋) 的历次作业题目和我的个人解答，点击标题可进入对应内容页面：
+必做
+必做07 
+必做08
+必做09
+
+选做
+选做01
+选做09
+
+
+
+📌 说明：所有笔记持续更新，点击链接直接跳转到对应页面，返回总览可点击顶部导航栏的“SCU程序设计基础-软件(2025秋)总览”。
+
+]]></content>
+  </entry>
+  <entry>
+    <title>C语言历年期末真题(上半部分)</title>
+    <url>/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/</url>
+    <content><![CDATA[1: 最小的数描述给定0-9数字各若干个，以任意顺序排列这些数字，使得最后得到的数尽可能小（0 不能做首位）。
+输入在一行中给出 10 个非负整数，顺序表示数字 0、数字 1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不超过 50，且至少拥有 1 个非 0 的数字。
+输出在一行中输出能够组成的最小的数。
+样例输入
+2 2 0 0 0 3 0 0 1 0
+输出
+10015558
+
+代码#include&lt;stdio.h&gt;int main(void)&#123;    int digits[10];    for(int i = 0;i&lt;10;i++)&#123;        scanf(&quot;%d&quot;,&amp;digits[i]);    &#125;    for(int i = 1;i&lt;10;i++)&#123;        if(digits[i] &gt; 0)&#123;            printf(&quot;%d&quot;,i);            digits[i]--;            break;        &#125;    &#125;    for(int i = 0;i&lt;10;i++)&#123;        while(digits[i]&gt;0)&#123;            printf(&quot;%d&quot;,i);            digits[i]--;        &#125;    &#125;    printf(&quot;\n&quot;);    return 0;&#125;
+
+2: 不同的元素描述给定一个整型数组，统计不同的元素的个数。
+输入每组输入占一行，每先给出正整数 $n (n≤30)$，随后是 n 个整数 $a_i​ (−100≤a_i​≤100)$，以空格分隔。
+输出输出占一行，以回车结束。输出不同的元素的个数。
+样例1输入
+4 3 -5 2 8
+输出
+4
+样例2输入
+8 -5 8 8 8 8 8 8 -5
+输出
+2
+
+代码#include&lt;stdio.h&gt;int main(void)&#123;    int n;    scanf(&quot;%d&quot;,&amp;n);    int existed[30];    int cnt = 0;    for(int i = 0;i&lt;n;i++)&#123;        if(i == 0)&#123;            scanf(&quot;%d&quot;,&amp;existed[i]);            cnt++;        &#125;else&#123;            int num;            scanf(&quot;%d&quot;,&amp;num);            int found = 0;            for(int j = i;j&gt;=0;j--)&#123;                if(existed[j] == num)&#123;                    found = 1;                &#125;            &#125;            if(!found)&#123;                existed[i] = num;                cnt++;            &#125;else&#123;                existed[i] = 101;            &#125;        &#125;    &#125;    printf(&quot;%d&quot;,cnt);    return 0;&#125;
+
+3: 矩阵的幂描述给你一个$n∗n$的矩阵$A$，计算矩阵$A$的$k$次方，即计算
+$$\underbrace{A * A * \dots * A}_{k\text{个}}$$
+矩阵乘法的定义为：若$A,B,C$都是矩阵，$A∗B&#x3D;C$，那么有$$C_{i,j} &#x3D; \sum_{k&#x3D;0}^{n-1} \left(A_{i,k} * B_{k,j}\right)$$
+输入第一行为矩阵的阶数$n$，以及$k$次方。接下来$n$行，每行有$n$个数，分别用空格分开。代表矩阵$A$。其中$1≤n,k≤7$，且矩阵AA中每个元素满足 $1≤A_i,_j≤7$。
+输出输出一个$n∗n$的矩阵，代表计算结果
+样例输入
+3 22 1 52 5 77 3 3
+
+输出
+41 22 3263 48 6641 31 65
+
+代码#include&lt;stdio.h&gt;int main(void)&#123;    int n,k;    scanf(&quot;%d %d&quot;,&amp;n,&amp;k);    long long matrix[7][7],res[7][7];    for(int i = 0;i&lt;n;i++)&#123;        for(int j = 0;j&lt;n;j++)&#123;            scanf(&quot;%d&quot;,&amp;matrix[i][j]);            res[i][j] = matrix[i][j];        &#125;    &#125;    long long temp[7][7];    if(k == 1)&#123;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                printf(&quot;%lld &quot;,res[i][j]);            &#125;            printf(&quot;\n&quot;);        &#125;        return 0;    &#125;    for(int step = 0;step&lt;k-1;step++)&#123;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                temp[i][j] = 0;            &#125;        &#125;        for(int row = 0;row&lt;n;row++)&#123;            for(int col = 0;col&lt;n;col++)&#123;                long long sum = 0;                for(int t=0;t&lt;n;t++)&#123;                    sum += res[row][t]*matrix[t][col];                &#125;                temp[row][col] = sum;            &#125;        &#125;        for(int i = 0;i&lt;n;i++)&#123;            for(int j = 0;j&lt;n;j++)&#123;                res[i][j] = temp[i][j];            &#125;        &#125;    &#125;    for(int i = 0;i&lt;n;i++)&#123;        for(int j = 0;j&lt;n;j++)&#123;            printf(&quot;%lld &quot;,res[i][j]);        &#125;        printf(&quot;\n&quot;);    &#125;    return 0;&#125;
+
+4: 日期距离描述众所周知，日期有两种表示方法:MM&#x2F;DD&#x2F;YY或者YY&#x2F;MM&#x2F;DD.我们假设本题讨论的年份的格式都是20YY。
+给你一个字符串，如果它只能代表一个合法的日期，满足MM&#x2F;DD&#x2F;YY的格式或者是YY&#x2F;MM&#x2F;DD的格式，那么输出 “month date,year”的格式（见第二个样例），否则输出在这两种表示法下的日期差（见第一个样例）。
+
+提示1：一年有12个月，分别是January, February, March, April, May, June, July, August, September, October, November 和 December。
+
+提示2：注意闰年2月份有29天。闰年需要满足以下两个条件之一:
+
+年份是400的倍数。
+年份是4的倍数但年份不是100的倍数。
+
+
+
+输入一个时间字符串，格式为AA&#x2F;BB&#x2F;CC。保证AA&#x2F;BB&#x2F;CC至少满足两种表示法其中之一。
+输出见描述。
+样例输入
+02/07/1919/02/07
+
+输出
+6047February 7, 2019
+
+提示样例1：02/07/19可能是2019.2.7(采用MM&#x2F;DD&#x2F;YY表示法)或者是2002.7.19(采用YY&#x2F;MM&#x2F;DD表示法)。这两个日期相差6047天。
+样例2：19/02/07只能是2019.2.7(YY&#x2F;MM&#x2F;DD表示法)。也就是只能代表这一个日期，按照要求输出即可。
+代码#include &lt;stdlib.h&gt;#include &lt;string.h&gt;// 判定闰年int is_leap(int y) &#123;    return (y % 400 == 0 || (y % 4 == 0 &amp;&amp; y % 100 != 0));&#125;// 获取每月天数int get_month_days(int y, int m) &#123;    int ds[] = &#123;0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31&#125;;    if (m == 2 &amp;&amp; is_leap(y)) return 29;    if (m &gt;= 1 &amp;&amp; m &lt;= 12) return ds[m];    return 0;&#125;// 验证日期合法性int is_valid(int y, int m, int d) &#123;    if (m &lt; 1 || m &gt; 12) return 0;    if (d &lt; 1 || d &gt; get_month_days(y, m)) return 0;    return 1;&#125;// 计算绝对天数long long to_abs_days(int y, int m, int d) &#123;    long long total = 0;    for (int i = 2000; i &lt; y; i++) &#123;        total += is_leap(i) ? 366 : 365;    &#125;    for (int i = 1; i &lt; m; i++) &#123;        total += get_month_days(y, i);    &#125;    total += d;    return total;&#125;char* months[] = &#123;&quot;&quot;, &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;,                   &quot;July&quot;, &quot;August&quot;, &quot;September&quot;, &quot;October&quot;, &quot;November&quot;, &quot;December&quot;&#125;;int main() &#123;    int a, b, c;    // 使用 scanf 处理前导零    if (scanf(&quot;%d/%d/%d&quot;, &amp;a, &amp;b, &amp;c) != 3) return 0;    // 格式1: MM/DD/YY -&gt; 20CC/A/B    int y1 = 2000 + c, m1 = a, d1 = b;    int v1 = is_valid(y1, m1, d1);    // 格式2: YY/MM/DD -&gt; 20A/B/C    int y2 = 2000 + a, m2 = b, d2 = c;    int v2 = is_valid(y2, m2, d2);    if (v1 &amp;&amp; v2) &#123;        // 如果两个日期其实是同一天        if (y1 == y2 &amp;&amp; m1 == m2 &amp;&amp; d1 == d2) &#123;            printf(&quot;%s %d, %d\n&quot;, months[m1], d1, y1);        &#125; else &#123;            // 计算差值            long long diff = to_abs_days(y1, m1, d1) - to_abs_days(y2, m2, d2);            if (diff &lt; 0) diff = -diff;            printf(&quot;%lld\n&quot;, diff);        &#125;    &#125; else if (v1) &#123;        // 只有 MM/DD/YY 合法        printf(&quot;%s %d, %d\n&quot;, months[m1], d1, y1);    &#125; else if (v2) &#123;        // 只有 YY/MM/DD 合法        printf(&quot;%s %d, %d\n&quot;, months[m2], d2, y2);    &#125;    return 0;&#125;
+
+5: 中值滤波描述中值滤波是对一个滑动窗口内的值进行排序，用其中值代替窗口中心点的原来值的滤波方法，它在抑制随机噪声的同时能有效保护原有信息。以一维信号的中值滤波举例。
+对序列80 120 90 200 100 110 150，假设滤波窗口宽度为5,那么有
+
+
+
+滤波窗口的子序列
+子序列排序
+待替换的值
+序列中值
+
+
+
+80 120 90 200 100
+80 90 100 120 200
+90
+100
+
+
+120 90 200 100 110
+90 100 110 120 200
+200
+110
+
+
+90 200 100 110 150
+90 100 110 150 200
+100
+110
+
+
+滤波窗口的值如果不够5个值那么不改变对应点的值， 比如左侧的80， 以它为中心的5个长度的窗口内没有5个数，所以这个点仍然是80不变。
+所以最后滤波结果是80 120 100 110 110 110 150。
+如果滤波窗口宽度为3，那么滤波结果是80 90 120 100 110 110 150。
+输入只包含一组数据。每组数据包括2行。第一行为2个整数w、n，w为滤波窗口宽度（必须是奇数），n表示后面有n个整数。第二行为待滤波的n个整数，各数之间用一个空格来间隔。
+输出输出滤波后的序列，各数之间用一个空格分隔，输出需占一行，结尾需换行。如果输入w不是奇数那么输出ERROR。
+样例输入
+3 51 3 9 2 85 51 3 9 2 84 51 3 9 2 8
+
+输出
+1 3 3 8 81 3 3 2 8ERROR
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int w,n;    cin &gt;&gt; w &gt;&gt; n;    //w是窗口宽度,n是数据量    if(w % 2 == 0)&#123;        cout &lt;&lt; &quot;ERROR&quot; &lt;&lt; &#x27;\n&#x27;;        return 0;    &#125;    vector&lt;int&gt; nums(n);    for(int i = 0;i&lt;n;i++)&#123;        cin &gt;&gt; nums[i];    &#125;    vector&lt;int&gt; res = nums;    int half = w/2;    for(int i = 0;i&lt;n;i++)&#123;        int left = i - half;        int right = i + half;        if(left &lt; 0 ||  right &gt;= n)&#123;            continue;        &#125;        vector&lt;int&gt; window;        for(int j = left;j&lt;=right;j++)&#123;            window.push_back(nums[j]);        &#125;        sort(window.begin(),window.end());        int midnum = window[half];        res[i] = midnum;    &#125;    for(int i = 0;i&lt;n;i++)&#123;        cout &lt;&lt; res[i] &lt;&lt; &#x27; &#x27;;    &#125;    cout &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
+
+6: 判断直角三角形描述输入三角形的3条边长， 判断三角形是否是直角三角形。
+输入第1行是一个整数n，表示随后有n组数据。每组数据占一行，包含3个整数代表3条边长(每个整数的平方能够用32位整数表示)，用空格分隔。
+输出每组输出占一行，如果是直角三角形输出Yes，不是则输出No。
+样例输入
+23 4 5   3 5 7
+
+输出
+YesNo
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int n;    cin &gt;&gt; n;    for(int i = 0;i&lt;n;i++)&#123;        int a,b,c;        cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;        if(a + b &gt; c &amp;&amp; a + c &gt; b &amp;&amp; b + c &gt; a)&#123;            if(a*a + b*b == c*c || a*a + c*c == b*b || b*b + c*c == a*a)&#123;                cout &lt;&lt; &quot;Yes&quot; &lt;&lt; &#x27;\n&#x27;;            &#125;else&#123;                cout &lt;&lt; &quot;No&quot; &lt;&lt; &#x27;\n&#x27;;            &#125;        &#125;else&#123;            cout &lt;&lt; &quot;No&quot; &lt;&lt; &#x27;\n&#x27;;        &#125;    &#125;    return 0;&#125;
+
+7: 求绝对值最大的数描述求一组数据中绝对值最大的数输出。
+输入每行输入包含一个测试用例，第一个整数$m(1≤m≤20)$，表示随后有m个整数(能够用32位整数表示)，各数之间用空格分隔。
+输出每组输出占一行，输出绝对值最大的数。(不考虑最大值对应多个输入的情况)
+样例输入
+3 0 -2 1
+输出
+-2
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int m;    cin &gt;&gt; m;    vector&lt;int&gt; nums(m);    for(int i = 0;i&lt;m;i++)&#123;        cin &gt;&gt; nums[i];    &#125;    int max = nums[0];    for(int i = 0;i&lt;m;i++)&#123;        if(abs(nums[i]) &gt; abs(max))&#123;            max = nums[i];        &#125;    &#125;    cout &lt;&lt; max &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
+
+8: 分解偶数描述任何大于 6 的偶数都可以分解成两个奇质数的和。输入 n，输出所有解，按小的在前，大的在后输出，不要重复。
+输入每行输入包含一个测试用例，输入一个整数 $n (n≤10000000)$。
+输出对符合要求的输入数据，依次输出所有解，每个解占一行，两个数用空格分隔。对输入不符合要求的数，则输出ERROR。
+样例输入
+10
+
+输出
+3 75 5
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int is_odd_prime(int num)&#123;    if(num &lt; 3) return 0;    if(num == 3) return 1;    if(num % 2 == 0) return 0;    for(int i = 3;i*i&lt;=num;i+=2)&#123;        if(num % i == 0)&#123;            return 0;        &#125;    &#125;    return 1;&#125;int main(void)&#123;    int n;    cin &gt;&gt; n;    if(n &lt;= 6 || n % 2 != 0)&#123;        cout &lt;&lt; &quot;ERROR&quot; &lt;&lt; &#x27;\n&#x27;;    &#125;else&#123;        for(int i = 3;i&lt;=n/2;i+=2)&#123;            int j = n - i;            if(is_odd_prime(i) &amp;&amp; is_odd_prime(j))&#123;                cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; j &lt;&lt; &#x27;\n&#x27;;            &#125;        &#125;    &#125;    return 0;&#125;
+
+9: 显示柱状图描述根据输入的数字和符号生成相应的柱状图显示。
+输入每个输入包含一个测试用例，第一个整数$m (1≤m≤20)$，表示随后有$m$组数据，每组数据由一个数字$n(−15≤n≤15)$和一个字符组成，每组数据之间用空格分隔。数字代表柱状图的高度，字母代表该柱使用的画图符号。如果数字后没有字母，默认该柱的画图符号使用加号+。
+输出每个柱之间用1个空格间隔，图的空白处用空格填充。用减号-表示x轴。正数柱状向上，负数柱状向下。
+样例输入
+6 1a 3 4b 2 -2 1
+
+输出
+    b        + b        + b +    a + b +   +-----------        +          +  
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;struct Column &#123;    int h;    char s;&#125;;int main(void)&#123;    int m;    cin &gt;&gt; m;    vector&lt;Column&gt; cols(m);    int max_h = 0,min_h = 0;    for(int i = 0;i&lt;m;i++)&#123;        cin &gt;&gt; cols[i].h;        char next = cin.peek();        while(next == &#x27; &#x27;)&#123;            cin.ignore();            next = cin.peek();        &#125;        if(next != EOF &amp;&amp; !isdigit(next) &amp;&amp; next != &#x27;-&#x27; &amp;&amp; next != &#x27;\n&#x27;)&#123;            cin &gt;&gt; cols[i].s;        &#125;else&#123;            cols[i].s = &#x27;+&#x27;;        &#125;        max_h = max(max_h,cols[i].h);        min_h = min(min_h,cols[i].h);    &#125;    //中间是空格    int width = 2*m - 1;    for(int k = max_h;k&gt;=1;k--)&#123;        string line = &quot;&quot;;        for(int i = 0;i&lt;m;i++)&#123;            if(cols[i].h &gt;= k) line += cols[i].s;            else line += &#x27; &#x27;;            if(i &lt; m-1) line += &#x27; &#x27;;        &#125;        while(!line.empty() &amp;&amp; line.back() == &#x27; &#x27;) line.pop_back();        if(!line.empty()) cout &lt;&lt; line &lt;&lt; &#x27;\n&#x27;;    &#125;    for(int i = 0;i&lt;width;i++)&#123;        cout &lt;&lt; &#x27;-&#x27;;    &#125;    cout &lt;&lt; &#x27;\n&#x27;;    for(int k = -1;k &gt;= min_h;k--)&#123;        string line = &quot;&quot;;        for(int i = 0;i&lt;m;i++)&#123;            if(cols[i].h &lt;= k) line += cols[i].s;            else line += &#x27; &#x27;;            if(i &lt; m-1) line += &#x27; &#x27;;        &#125;        while(!line.empty() &amp;&amp; line.back() == &#x27; &#x27;) line.pop_back();        if(!line.empty()) cout &lt;&lt; line &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
+
+10: 统计回文数描述输入一段文本，统计中间出现次数最多的回文数。回文数是类似12321，1221这样，顺序和逆序相同的十进制无符号整数，不考虑符号，长度至少为2，不能以0开始。另外，不考虑数的一部分，即abc1232abc中的232不是一个单独的数。(数据可能超过32位)
+输入输入数据为一段文本，可能包含若干行，直到文件末尾为止。即只有一组测试用例。
+输出对于每一组输入数据，输出出现次数最多的回文数和它出现的次数。如果有多个，按数字从小到大输出，每个数占一行。如果没有， 输出None。
+样例输入
+Thin34543king 121 is8 interesting121.I like121 thinking23.
+
+输出
+121 3
+
+提示本题虽然是找整数，但最好的方法是全部按字符串来处理。
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int is_palindrome(const string &amp;s)&#123;    if(s.length() &lt; 2 || s[0] == &#x27;0&#x27;) return 0;    int i = 0,j = s.length() - 1;    while(i &lt; j)&#123;        if(s[i++] != s[j--]) return 0;    &#125;    return 1;&#125;int cmp_num(const string &amp;a,const string &amp;b)&#123;    if(a.length() != b.length()) return a.length() &lt; b.length();    return a&lt;b;&#125;int main(void)&#123;    string line;    map&lt;string,int&gt; cnts;    while(getline(cin,line))&#123;        string curr_digit = &quot;&quot;;        for(int i = 0;i&lt;=line.length();i++)&#123;            if(i&lt;line.length() &amp;&amp; isdigit(line[i]))&#123;                curr_digit += line[i];            &#125;else&#123;                if(!curr_digit.empty())&#123;                    if(is_palindrome(curr_digit))&#123;                        cnts[curr_digit] ++;                    &#125;                    curr_digit = &quot;&quot;;                &#125;            &#125;        &#125;    &#125;    if(cnts.empty())&#123;        cout &lt;&lt; &quot;None&quot; &lt;&lt; &#x27;\n&#x27;;        return 0;    &#125;    int max_freq = 0;    for(auto const&amp; [num,freq] : cnts)&#123;        if(freq &gt; max_freq) max_freq = freq;    &#125;    vector&lt;string&gt; result;    for(auto const&amp;[num,freq]: cnts)&#123;        if(freq == max_freq)&#123;            result.push_back(num);        &#125;    &#125;    sort(result.begin(),result.end(),cmp_num);    for(const string&amp; s : result)&#123;        cout &lt;&lt; s &lt;&lt; &quot; &quot; &lt;&lt; max_freq &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
+
+11: 计算平方和描述输入 4 个十进制整数，计算它们的平方和并输出。
+输入输入 4 个十进制整数，范围是−10000~10000。
+输出输出它们的平方和。
+样例输入
+1 2 3 4
+
+输出
+30
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    long long a,b,c,d;    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;    cout &lt;&lt; a*a + b*b + c*c + d*d &lt;&lt; &#x27;\n&#x27;;    return 0;&#125;
+
+12: 数的表示描述任何一个正整数都可以用 22 的幂次方表示。例如 138&#x3D;27+23+21。
+请编程输出给定正整数的幂次表达式。
+输入输入 1 个十进制正整数，范围是1~100000。
+输出输出它的幂次表达式，按幂次降序排列。
+样例输入
+2
+
+输出
+2=2^1
+
+输入
+9
+
+输出
+9=2^3+2^0
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    int num;    cin &gt;&gt; num;    int temp = num;    int res[32] = &#123;0&#125;;    int cnt = 0;    while(temp &gt; 0)&#123;        res[cnt++] = temp % 2;        temp &gt;&gt;= 1;    &#125;    int need_plus = 0;    cout &lt;&lt; num &lt;&lt; &#x27;=&#x27;;    for(int i = cnt-1;i&gt;=0;i--)&#123;        if(res[i] == 1)&#123;            if(need_plus)&#123;                cout &lt;&lt; &#x27;+&#x27;;            &#125;            cout &lt;&lt; 2 &lt;&lt; &#x27;^&#x27; &lt;&lt; i;            need_plus = 1;        &#125;    &#125;    return 0;&#125;
+
+13: 对称子串描述有两个字符串S1,S2，请编程检测S2是否在S1中对称出现(S2正串一定要在S2反串前面)，并输出最大对称间隔。
+例如：
+S1 &#x3D; fabcdhba, S2 &#x3D; ab，其中，ab...ba称为S2在S1中对称出现了1次，S2正串为ab，S2反串为ba，对称间隔为3。S1 &#x3D; abcdhbaghba, S2&#x3D;ab，其中，ab...ba..ba称为S2在S1中对称出现了2次，对称间隔为3和7。
+如果S2对称出现多次，则输出最大间隔。
+注意：如果S2和S2的反串有部分重叠，那么间隔是负数。
+输入输入两个字符串S1,S2，以空格分开，字符串内部没有空格。
+S1长度不超过300，S2的长度不超过10。
+输出输出S2最大对称间隔。
+如果没有对称出现的S2出现，则输出no。
+样例输入
+abcdhba abcd
+
+输出
+no
+
+输入
+abcdhbaghba ab
+
+输出
+7
+
+代码#include&lt;bits/stdc++.h&gt;using namespace std;int main(void)&#123;    string s1,s2;    cin &gt;&gt; s1 &gt;&gt; s2;    string s2_rev = s2;    reverse(s2_rev.begin(),s2_rev.end());    vector&lt;int&gt; pos1;//正串出现的位置    vector&lt;int&gt; pos2;//反串    int found = (int)s1.find(s2);    while(found != string::npos)&#123;        pos1.push_back(found);        found = (int)s1.find(s2,found+1);    &#125;    found = (int)s1.find(s2_rev);    while(found != string::npos)&#123;        pos2.push_back(found);        found = (int)s1.find(s2_rev,found+1);    &#125;    int found_pair = 0;    int max_dist = -10000;//初始化为极小值    int len2 = s2.length();    for(int i : pos1)&#123;        for(int j : pos2)&#123;            if(j &gt; i)&#123;                found_pair = 1;                int curr_dist = j - (i + len2);                if(curr_dist &gt; max_dist)&#123;                    max_dist = curr_dist;                &#125;            &#125;        &#125;    &#125;    if(!found_pair)&#123;        cout &lt;&lt; &quot;no\n&quot;;    &#125;else&#123;        cout &lt;&lt; max_dist &lt;&lt; &#x27;\n&#x27;;    &#125;    return 0;&#125;
+
+14: 走迷宫描述给一个 $N×M$ 的字符矩阵 $S，S_i,_j∈{U,D,L,R}$。
+设当前位置为 $(x,y)$，定义一次移动为：
+
+若  $S_x,_y​&#x3D;U$，则向上移动到 $(x−1,y)$ ，若  $x&#x3D;1$，则移动到 $(N,y)$。
+若  $S_x,_y​&#x3D;D$，则向下移动到 $(x+1,y)$，若  $x&#x3D;N$，则移动到 $(1,y)$。
+若  $S_x,_y​&#x3D;L$，则向左移动到 $(x,y−1)$，若 $y&#x3D;1$，则移动到 $(x,M)$。
+若  $S_x,_y​&#x3D;R$，则向右移动到 $(x,y+1)$，若 $y&#x3D;M$，则移动到 $(x,1)$。
+
+有 Q 次询问。
+每次询问给出一个初始坐标 $(x_0​,y_0​)$，和移动次数 step，回答经过 step 次移动后到达的坐标。
+限制时间限制 $1s$，空间限制 $256M$
+$1≤N,M,Q≤50$$Si,j∈{U,D,L,R}(1≤i≤N,1≤j≤M)$$1≤x_0≤N$$1≤y_0≤M$$1≤step≤3000$
+输入第一行输入 $N,M$。接下来有 $N$ 行，每行有 $M$ 个字符，字符取值范围为 $U,D,L,R$。接下来一行输入 $Q$。接下来有 $Q$ 行，每行输入 $x_0,y_0,step$。
+输出对于每个询问，输出答案，每行输出两个整数，表示坐标。
+样例输入
+5 5UDRRULRDDLDLUUDRULLRUDURU51 1 12 1 23 3 104 2 993 5 3000
+
+输出
+5 12 43 34 13 2
+
+解释对于第 11 次询问，(1,1)(1,1) 向上移动一次到达 (5,1)(5,1)对于第 22 次询问，(2,1)(2,1) 向左移动一次到达 (2,5)(2,5)，向左移动一次到达 (2,4)(2,4)对于第 33 次询问，路径为 (3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3)(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3),(2,3),(3,3)
+代码#include&lt;stdio.h&gt;#include&lt;string.h&gt;char op[50][50];int main(void)&#123;    int N,M;    scanf(&quot;%d %d&quot;,&amp;N,&amp;M);    for(int i = 0;i&lt;N;i++)&#123;        scanf(&quot;%s&quot;,op[i]);    &#125;    int Q;    scanf(&quot;%d&quot;,&amp;Q);    for(int k = 0;k&lt;Q;k++)&#123;        int x,y,step;        scanf(&quot;%d %d %d&quot;,&amp;x,&amp;y,&amp;step);        //1-base转0-base        x -= 1;        y -= 1;        for(int s = 0;s &lt; step;s++)&#123;            if(op[x][y] == &#x27;U&#x27;)&#123;                if(x == 0)&#123;                    x = N - 1;                &#125;else&#123;                    x -= 1;                &#125;            &#125;else if(op[x][y] == &#x27;D&#x27;)&#123;                if(x == N-1)&#123;                    x = 0;                &#125;else&#123;                    x += 1;                &#125;            &#125;else if(op[x][y] == &#x27;L&#x27;)&#123;                if(y == 0)&#123;                    y = M - 1;                &#125;else&#123;                    y -= 1;                &#125;            &#125;else if(op[x][y] == &#x27;R&#x27;)&#123;                if(y == M-1)&#123;                    y = 0;                &#125;else&#123;                    y += 1;                &#125;            &#125;else&#123;                continue;            &#125;        &#125;        printf(&quot;%d %d\n&quot;,x+1,y+1);    &#125;    return 0;&#125;
+
+15: 排名计算描述ICPC竞赛需要依据参赛选手的代码提交来进行排名，参赛选手的代码提交后，有以下几种状态：AC、WA、PE、RE、TE、ME、OE、CE，其中只有 AC代表题目顺利通过。对于每一次提交，如果你是第一次通过该题（状态为 AC），那么你通过的题目数加1，并且将你通过的时间（距离竞赛开始经过了多长时间，注：这里为了简化以分钟数计算）计入罚时。除此之外罚时还会加上你第一次通过之前的尝试次数×20。对于某一时刻t，所有参赛队伍在该时刻t之前(包括时刻t)的提交会被统计为通过题目数和罚时。
+比较A、B两只队伍的排名，优先比较通过题目数（通过题目数越多排名越前），通过题目数相同时比较罚时（罚时越低排名越前），前两者都相同则比较队伍的id（id小的排名越前）。
+现在总共有q次询问，每次询问想要在t时刻根据队伍id或队伍名字查询队伍的排名信息（队伍名字不唯一，但队伍id唯一，若查询队伍名字则需将名字相同的所有队伍信息由排名从高至低依次输出）。
+注意：
+
+状态为 CE 的提交是不会被计算进尝试次数。
+只有当一个队伍 AC 一道题时，该题的罚时才会被计算。如果该题最终也未 AC，那么该题的罚时是不会被计算。
+如果有人在 AC 后又提交了错误代码，这种罚时也是不会被计算。
+该题中，比赛题目总数量为10。
+比赛的时间范围是09:00 ~ 14:00
+
+举个例子：小明在 10:00 时首次通过了题目B，且它在此之前提交了3次 (WA、CE、RE), 那么该题的罚时为 60+2×20&#x3D;100。
+但在 09:59 时，该题没有通过，所以也没有罚时。
+输入第一行是三个整数$1≤n≤500,1≤m≤50,1≤q≤200$ 分别代表提交次数、队伍总数和询问次数。
+接下来m行每行1个整数tid和一个字符串name，$1≤tid≤m,∣name∣≤20$分别表示队伍的id和该队伍的名字（每只队伍的id均不相同，名字均由小写字母组成且长度小于20）。
+接下来n行由tid,pid,s,t组成, tid代表提交的队伍id (1≤tid≤m), pid代表提交的题目id (1≤pid≤10), s代表评测状态(s ∈{ AC、WA、PE、RE、TE、ME、OE、CE}), t 代表提交时间，格式为 xx:xx 。
+输入保证每条提交记录是按照时间顺序给出，且不会有队伍在相同时间有超过一次的提交记录。
+接下来q行，每行包含3个字段，前两个数type,t分别表示查询的类型type∈{0,1}和查询的时刻t，格式 xx:xx (09:00 ~ 14:00)。
+
+当 type&#x3D;0时，按队伍id查询，输入的第三个数为要查询的队伍号。
+当 type&#x3D;1时，按队伍名查询，输入的第三个字符串为要查询的队伍名字。
+
+输出对每次查询，输出查询结果，每支队伍的信息占一行，包括队伍的排名、队伍的tid、队伍的name、队伍通过题目数量和队伍的总罚时。如果有多支队伍符合条件，按照排名顺序依次输出。
+样例输入
+5 3 31 yyds2 yyds3 ysqd1 1 WA 09:542 1 AC 10:131 1 AC 10:141 3 AC 11:112 2 CE 12:001 09:01 yyds0 10:14 11 12:00 yyds
+
+输出
+1 1 yyds 0 02 2 yyds 0 02 1 yyds 1 941 1 yyds 2 2252 2 yyds 1 73
+
+提示共有三个查询：
+第一个查询在09:01查询队伍名称为yyds的队伍的排名情况，队伍1与队伍2名字均为yyds且此时均未通过任何题目，所以依次输出两队信息。
+第二个查询在10:14查询队伍id&#x3D;1的排名信息，此时队伍id&#x3D;1通过题目数1，罚时74+20&#x3D;94。队伍id&#x3D;2通过题目数1，罚时73。故队伍id&#x3D;1此时排名为2。
+第三个查询同理可知队伍id&#x3D;1通过题目数2,罚时74+20+131&#x3D;225。队伍id&#x3D;2通过题目数1，罚时73，按照排名依次输出即可。
+代码#include &lt;vector&gt;#include &lt;string&gt;#include &lt;algorithm&gt;#include &lt;map&gt;using namespace std;// 时间转换函数：将 hh:mm 转为相对于 09:00 的分钟数int toMin(string s) &#123;    int h = stoi(s.substr(0, 2));    int m = stoi(s.substr(3, 2));    return (h - 9) * 60 + m;&#125;struct Team &#123;    int id;    string name;    int solved = 0;    int penalty = 0;    int rank = 0;&#125;;struct Submission &#123;    int tid, pid, time;    string status;&#125;;struct Node &#123;    bool is_ac = false;    int fail_count = 0;    int ac_time = 0;&#125;;int main() &#123;    int n, m, q;    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;    vector&lt;Team&gt; teams(m + 1);    for (int i = 0; i &lt; m; ++i) &#123;        int tid;        string name;        cin &gt;&gt; tid &gt;&gt; name;        teams[tid].id = tid;        teams[tid].name = name;    &#125;    vector&lt;Submission&gt; subs(n);    for (int i = 0; i &lt; n; ++i) &#123;        string t_str;        cin &gt;&gt; subs[i].tid &gt;&gt; subs[i].pid &gt;&gt; subs[i].status &gt;&gt; t_str;        subs[i].time = toMin(t_str);    &#125;    while (q--) &#123;        int type;        string query_t_str;        cin &gt;&gt; type &gt;&gt; query_t_str;        int query_t = toMin(query_t_str);        // 统计 query_t 时刻前所有队伍的状态        vector&lt;vector&lt;Node&gt;&gt; stat(m + 1, vector&lt;Node&gt;(11));        for (int i = 0; i &lt; n; ++i) &#123;            if (subs[i].time &gt; query_t) continue;            int tid = subs[i].tid;            int pid = subs[i].pid;            if (stat[tid][pid].is_ac) continue; // AC后不再统计            if (subs[i].status == &quot;AC&quot;) &#123;                stat[tid][pid].is_ac = true;                stat[tid][pid].ac_time = subs[i].time;            &#125; else if (subs[i].status != &quot;CE&quot;) &#123;                stat[tid][pid].fail_count++;            &#125;        &#125;        // 计算罚时和解题数        vector&lt;Team&gt; rank_list;        for (int i = 1; i &lt;= m; ++i) &#123;            Team t = teams[i];            t.solved = 0;            t.penalty = 0;            for (int p = 1; p &lt;= 10; ++p) &#123;                if (stat[i][p].is_ac) &#123;                    t.solved++;                    t.penalty += stat[i][p].ac_time + stat[i][p].fail_count * 20;                &#125;            &#125;            rank_list.push_back(t);        &#125;        // 排序规则        sort(rank_list.begin(), rank_list.end(), [](const Team&amp; a, const Team&amp; b) &#123;            if (a.solved != b.solved) return a.solved &gt; b.solved;            if (a.penalty != b.penalty) return a.penalty &lt; b.penalty;            return a.id &lt; b.id;        &#125;);        // 标记排名        for (int i = 0; i &lt; m; ++i) &#123;            rank_list[i].rank = i + 1;        &#125;        // 处理查询        if (type == 0) &#123;            int q_tid;            cin &gt;&gt; q_tid;            for (auto&amp; t : rank_list) &#123;                if (t.id == q_tid) &#123;                    cout &lt;&lt; t.rank &lt;&lt; &quot; &quot; &lt;&lt; t.id &lt;&lt; &quot; &quot; &lt;&lt; t.name &lt;&lt; &quot; &quot; &lt;&lt; t.solved &lt;&lt; &quot; &quot; &lt;&lt; t.penalty &lt;&lt; endl;                    break;                &#125;            &#125;        &#125; else &#123;            string q_name;            cin &gt;&gt; q_name;            for (auto&amp; t : rank_list) &#123;                if (t.name == q_name) &#123;                    cout &lt;&lt; t.rank &lt;&lt; &quot; &quot; &lt;&lt; t.id &lt;&lt; &quot; &quot; &lt;&lt; t.name &lt;&lt; &quot; &quot; &lt;&lt; t.solved &lt;&lt; &quot; &quot; &lt;&lt; t.penalty &lt;&lt; endl;                &#125;            &#125;        &#125;    &#125;    return 0;&#125;]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/11/05/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server$ hexo server
+
+More info: Server
+Generate static files$ hexo generate
+
+More info: Generating
+Deploy to remote sites$ hexo deploy
+
+More info: Deployment
+]]></content>
+  </entry>
+  <entry>
     <title>蓝桥杯备赛笔记（全章节整理）</title>
     <url>/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[蓝桥杯备赛笔记（全章节整理）Hello 大家好！这是我的蓝桥杯算法竞赛备赛笔记，主要基于C&#x2F;C++语言，涵盖蓝桥杯省赛、国赛的核心考点，章节与实际学习文件夹一一对应，持续更新中~
@@ -1542,5 +1432,115 @@ OJ部分习题及解答
         <tag>算法</tag>
         <tag>备赛笔记</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>三大微分中值定理</title>
+    <url>/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/</url>
+    <content><![CDATA[三大中值定理总结（含考研真题示例，每题1道例题）一、罗尔定理（Rolle’s Theorem）1. 核心定义若函数 $f(x)$ 满足 3个条件：
+
+闭区间连续：$f(x) \in C[a,b]$（在$[a,b]$上连续）；
+开区间可导：$f(x) \in D(a,b)$（在$(a,b)$内可导）；
+端点值相等：$f(a) &#x3D; f(b)$；则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; 0$。
+
+几何意义：连续可导曲线在区间端点函数值相等时，曲线上至少有一点的切线与x轴平行（水平切线）。
+2. 考研真题示例（2017年数学一&#x2F;二&#x2F;三）设函数 $f(x)$ 在$[0,1]$上连续，在$(0,1)$内可导，且 $f(1) &#x3D; 0$。证明：存在 $\xi \in (0,1)$，使得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。
+证明步骤（可直接用于笔记&#x2F;答题）：
+
+构造辅助函数：将待证式变形为 $\xi f’(\xi) + f(\xi) &#x3D; 0$，观察到左边是 $[x f(x)]’$ 的形式，故令 $F(x) &#x3D; x f(x)$。
+验证罗尔定理条件：
+连续性：$f(x)$ 连续、$x$ 连续，乘积 $F(x) \in C[0,1]$；
+可导性：乘积求导得 $F’(x) &#x3D; f(x) + x f’(x)$，故 $F(x) \in D(0,1)$；
+端点相等：$F(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$F(1) &#x3D; 1 \cdot f(1) &#x3D; 0$，即 $F(0) &#x3D; F(1)$。
+
+
+应用定理：由罗尔定理，存在 $\xi \in (0,1)$ 使得 $F’(\xi) &#x3D; 0$，即 $f(\xi) + \xi f’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; -\frac{f(\xi)}{\xi}$。
+
+二、拉格朗日中值定理（Lagrange’s Mean Value Theorem）1. 核心定义若函数 $f(x)$ 满足 2个条件：
+
+闭区间连续：$f(x) \in C[a,b]$；
+开区间可导：$f(x) \in D(a,b)$；则存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; \frac{f(b) - f(a)}{b - a}$。
+
+几何意义：连续可导曲线在区间上至少有一点的切线与区间端点连线（割线）平行。
+常用等价形式：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$（增量公式，可直接用于不等式证明、函数单调性判断）。
+2. 考研真题示例（2019年数学一）设函数 $f(x)$ 在$[0,1]$上具有二阶导数，且 $f(1) &#x3D; 0$。记 $g(x) &#x3D; x f(x)$，证明：存在 $\xi \in (0,1)$，使得 $g’’(\xi) &#x3D; 0$。
+证明步骤（可直接用于笔记&#x2F;答题）：
+
+第一步：对 $g(x)$ 用罗尔定理找 $g’(x)$ 的零点：
+$g(x) &#x3D; x f(x)$，则 $g(0) &#x3D; 0 \cdot f(0) &#x3D; 0$，$g(1) &#x3D; 1 \cdot f(1) &#x3D; 0$；
+由罗尔定理，存在 $\eta \in (0,1)$ 使得 $g’(\eta) &#x3D; 0$。
+
+
+第二步：分析 $g’(x)$ 的表达式：
+求导得 $g’(x) &#x3D; f(x) + x f’(x)$，因 $f(x)$ 二阶可导，故 $g’(x) \in C[0,\eta]$ 且 $g’(x) \in D(0,\eta)$（可导必连续）。
+
+
+第三步：对 $g’(x)$ 用罗尔定理：
+代入 $x&#x3D;0$ 得 $g’(0) &#x3D; f(0) + 0 \cdot f’(0) &#x3D; f(0)$，结合 $g’(\eta) &#x3D; 0$，且 $g’(x)$ 可导，故存在 $\xi \in (0,\eta) \subset (0,1)$ 使得 $g’’(\xi) &#x3D; 0$。
+
+
+
+简化记忆：二阶导数为零的证明，常通过“对一阶导数用罗尔定理”，核心是找到一阶导数的两个零点。
+三、柯西中值定理（Cauchy’s Mean Value Theorem）1. 核心定义若函数 $f(x)$ 和 $g(x)$ 满足 4个条件：
+
+闭区间连续：$f(x), g(x) \in C[a,b]$；
+开区间可导：$f(x), g(x) \in D(a,b)$；
+导数不同时为零：对任意 $x \in (a,b)$，$f’(x)^2 + g’(x)^2 \neq 0$；
+端点函数值不等：$g(a) \neq g(b)$；则存在 $\xi \in (a,b)$，使得 $\frac{f(b) - f(a)}{g(b) - g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$。
+
+几何意义：以 $x$ 为参数的曲线 $\begin{cases} X &#x3D; g(x) \ Y &#x3D; f(x) \end{cases}$ 上，至少有一点的切线与区间端点连线（割线）平行。
+特殊情况：当 $g(x) &#x3D; x$ 时，柯西中值定理退化为拉格朗日中值定理（故拉格朗日是柯西的特例）。
+2. 考研真题示例（2018年数学二）设函数 $f(x)$ 在$[a,b]$上连续，在$(a,b)$内可导，且 $f(a) &#x3D; f(b) &#x3D; 0$。证明：存在 $\xi \in (a,b)$，使得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$（其中 $g(x)$ 在$[a,b]$上连续且不为零，$g’(x)$ 存在）。
+证明步骤（可直接用于笔记&#x2F;答题）：
+
+构造辅助函数：将待证式变形为 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，观察到左边是 $\left[ \frac{f(x)}{g(x)} \right]’$ 的分子（商的求导法则：$\left( \frac{f}{g} \right)’ &#x3D; \frac{f’g - fg’}{g^2}$），故令 $F(x) &#x3D; \frac{f(x)}{g(x)}$。
+验证柯西中值定理条件：
+连续性：$f(x)$ 连续、$g(x)$ 连续且不为零，故 $F(x) \in C[a,b]$；
+可导性：商的求导法则，$F’(x) &#x3D; \frac{f’(x) g(x) - f(x) g’(x)}{g^2(x)}$，故 $F(x) \in D(a,b)$；
+端点相等：$F(a) &#x3D; \frac{f(a)}{g(a)} &#x3D; 0$，$F(b) &#x3D; \frac{f(b)}{g(b)} &#x3D; 0$，即 $F(a) &#x3D; F(b)$。
+
+
+应用定理：由罗尔定理（或柯西中值定理，因 $g(x)$ 满足条件），存在 $\xi \in (a,b)$ 使得 $F’(\xi) &#x3D; 0$，即 $f’(\xi) g(\xi) - f(\xi) g’(\xi) &#x3D; 0$，整理得 $f’(\xi) &#x3D; f(\xi) \cdot \frac{g’(\xi)}{g(\xi)}$。
+
+关键技巧：柯西中值定理的核心是“构造商式辅助函数”，本质是解决“两个函数的增量比与导数比”的关系问题。
+总结（便于笔记记忆）
+
+
+定理
+核心条件
+核心结论
+考研常用技巧
+
+
+
+罗尔定理
+连续、可导、端点值相等
+$f’(\xi) &#x3D; 0$
+构造辅助函数（乘积、加减）
+
+
+拉格朗日定理
+连续、可导
+$f’(\xi) &#x3D; \frac{f(b)-f(a)}{b-a}$
+增量公式、不等式证明
+
+
+柯西定理
+两函数连续、可导、$g(a) \neq g(b)$
+$\frac{f(b)-f(a)}{g(b)-g(a)} &#x3D; \frac{f’(\xi)}{g’(\xi)}$
+构造商式辅助函数
+
+
+共性：三大中值定理均是“连续+可导”的核心条件，本质是建立函数增量与导数的联系，考研重点在于“辅助函数构造”和“定理嵌套使用”（如拉格朗日定理嵌套罗尔定理）。
+泰勒公式和中值定理的联系泰勒公式与三大中值定理（罗尔、拉格朗日、柯西）本质是 “局部近似”与“区间中值”的递进关系——泰勒公式是中值定理的“高阶推广”，中值定理是泰勒公式的“低阶特例”，核心联系如下：
+1. 拉格朗日中值定理是泰勒公式的1阶特例泰勒公式（带拉格朗日余项）的一般形式：$f(x) &#x3D; f(x_0) + f’(x_0)(x - x_0) + \frac{f’’(x_0)}{2!}(x - x_0)^2 + \dots + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + R_n(x)$其中拉格朗日余项 $R_n(x) &#x3D; \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - x_0)^{n+1}$（$\xi$ 在 $x_0$ 与 $x$ 之间）。
+当取 $n&#x3D;0$ 时（0阶泰勒公式）：$f(x) &#x3D; f(x_0) + f’(\xi)(x - x_0)$令 $x &#x3D; b$、$x_0 &#x3D; a$，即得拉格朗日中值定理：$f(b) - f(a) &#x3D; f’(\xi)(b - a)$。
+2. 罗尔定理是泰勒公式的“特殊推论”对1阶泰勒公式，若 $f(a) &#x3D; f(b)$，则：$f(b) &#x3D; f(a) + f’(a)(b - a) + \frac{f’’(\xi)}{2!}(b - a)^2$因 $f(a) &#x3D; f(b)$，整理得 $f’(a) + \frac{f’’(\xi)}{2!}(b - a) &#x3D; 0$——但更直接的逻辑是：罗尔定理是证明泰勒公式余项的“基础工具”（证明泰勒余项时，常构造辅助函数，对其应用罗尔定理推导余项形式）。
+3. 柯西中值定理与泰勒公式的“互补关系”
+柯西中值定理聚焦 “两个函数的增量比与导数比”（解决比值型问题）；
+泰勒公式聚焦 “单个函数的高阶近似”（解决精度要求高的问题，如极限计算、不等式证明、高阶导数相关问题）。
+
+但二者本质一致：均依赖“函数连续可导”的条件，均通过“中值 $\xi$”建立函数与导数的联系，且柯西中值定理可作为证明泰勒公式的辅助工具（如推导柯西型余项时会用到）。
+4. 核心共性：“中值思想”的统一无论是中值定理还是泰勒公式，核心都是 “在区间内存在一点 $\xi$，将函数的整体增量（或近似误差）用某阶导数表示”——中值定理是“1阶导数的整体关联”，泰勒公式是“多阶导数的局部近似”，前者是后者的简化，后者是前者的深化。
+]]></content>
   </entry>
 </search>
