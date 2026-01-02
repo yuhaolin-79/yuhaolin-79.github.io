@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fish的学习之旅~ | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2.2.1 min和max函数、min和max是用于快速获取“最小值”“最大值”的常用函数，适用于数值、列表等场景，是取最值操作的基础工具。 1. min函数功能：返回输入数据中的较小值。参数规则：  传入2个独立值； 传入1个列表（或可迭代对象）。  2. max函数功能：返回输入数据中的较大值。参数规则：  传入2个独立值； 传入1个列表（或可迭代对象）。  3. 时间复杂度 传入2个独立值时">
+<meta property="og:type" content="website">
+<meta property="og:title" content="fish的学习之旅~">
+<meta property="og:url" content="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.2-%E6%9C%80%E5%80%BC%E6%9F%A5%E6%89%BE.html">
+<meta property="og:site_name" content="fish的学习之旅~">
+<meta property="og:description" content="2.2.1 min和max函数、min和max是用于快速获取“最小值”“最大值”的常用函数，适用于数值、列表等场景，是取最值操作的基础工具。 1. min函数功能：返回输入数据中的较小值。参数规则：  传入2个独立值； 传入1个列表（或可迭代对象）。  2. max函数功能：返回输入数据中的较大值。参数规则：  传入2个独立值； 传入1个列表（或可迭代对象）。  3. 时间复杂度 传入2个独立值时">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
+<meta property="article:published_time" content="2026-01-02T13:10:28.278Z">
+<meta property="article:modified_time" content="2025-12-22T13:08:50.416Z">
+<meta property="article:author" content="鱼浩琳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.2-%E6%9C%80%E5%80%BC%E6%9F%A5%E6%89%BE.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'fish的学习之旅~',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="2-2-1-min和max函数、"><a href="#2-2-1-min和max函数、" class="headerlink" title="2.2.1 min和max函数、"></a>2.2.1 <code>min</code>和<code>max</code>函数、</h1><p><code>min</code>和<code>max</code>是用于快速获取“最小值”“最大值”的常用函数，适用于数值、列表等场景，是取最值操作的基础工具。</p>
+<h3 id="1-min函数"><a href="#1-min函数" class="headerlink" title="1. min函数"></a>1. min函数</h3><p><strong>功能</strong>：返回输入数据中的<strong>较小值</strong>。<br><strong>参数规则</strong>：</p>
+<ul>
+<li>传入2个独立值；</li>
+<li>传入1个列表（或可迭代对象）。</li>
+</ul>
+<h3 id="2-max函数"><a href="#2-max函数" class="headerlink" title="2. max函数"></a>2. max函数</h3><p><strong>功能</strong>：返回输入数据中的<strong>较大值</strong>。<br><strong>参数规则</strong>：</p>
+<ul>
+<li>传入2个独立值；</li>
+<li>传入1个列表（或可迭代对象）。</li>
+</ul>
+<h3 id="3-时间复杂度"><a href="#3-时间复杂度" class="headerlink" title="3. 时间复杂度"></a>3. 时间复杂度</h3><ul>
+<li>传入2个独立值时：时间复杂度为 $O(1)$（直接比较一次）；</li>
+<li>传入列表（或数组）时：时间复杂度为 $O(n)$（需遍历整个列表，$n$ 为列表长度）。</li>
+</ul>
+<h1 id="2-2-2-min-element和max-element函数"><a href="#2-2-2-min-element和max-element函数" class="headerlink" title="2.2.2 min_element和max_element函数"></a>2.2.2 <code>min_element</code>和<code>max_element</code>函数</h1><p><code>min_element</code>与<code>max_element</code>是C++标准库（STL）中用于获取容器内最值的函数，核心作用是返回容器中最值对应的<strong>迭代器（地址）</strong>，需结合解引用操作获取具体值。</p>
+<h3 id="1-函数功能与参数"><a href="#1-函数功能与参数" class="headerlink" title="1. 函数功能与参数"></a>1. 函数功能与参数</h3><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+<th>参数要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>min_element</code></td>
+<td>返回区间<code>[st, ed)</code>内最小值的迭代器</td>
+<td>传入两个迭代器（表示区间范围）</td>
+</tr>
+<tr>
+<td><code>max_element</code></td>
+<td>返回区间<code>[st, ed)</code>内最大值的迭代器</td>
+<td>传入两个迭代器（表示区间范围）</td>
+</tr>
+</tbody></table>
+<h3 id="2-时间复杂度"><a href="#2-时间复杂度" class="headerlink" title="2. 时间复杂度"></a>2. 时间复杂度</h3><p>两者的时间复杂度均为 $O(n)$（$n$ 为区间内元素的数量），需遍历整个区间才能确定最值。</p>
+<h3 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span> <span class="comment">// 包含min_element/max_element的头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">11</span>&#125;;</span><br><span class="line">    <span class="comment">// 获取最大值的迭代器，通过*解引用得到具体值</span></span><br><span class="line">    cout &lt;&lt; *<span class="built_in">max_element</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; <span class="comment">// 输出：11</span></span><br><span class="line">    <span class="comment">// 获取最小值的迭代器，解引用得到具体值</span></span><br><span class="line">    cout &lt;&lt; *<span class="built_in">min_element</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>()) &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; <span class="comment">// 输出：1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-核心特点"><a href="#4-核心特点" class="headerlink" title="4. 核心特点"></a>4. 核心特点</h3><ul>
+<li>与普通<code>min/max</code>函数的区别：<code>min/max</code>直接返回值，而<code>min_element/max_element</code>返回<strong>迭代器</strong>（可用于定位最值在容器中的位置）；</li>
+<li>适用场景：需要同时获取“最值”和“其在容器中的位置”时，比<code>min/max</code>更灵活。</li>
+</ul>
+<h1 id="2-2-3-nth-element函数"><a href="#2-2-3-nth-element函数" class="headerlink" title="2.2.3 nth_element函数"></a>2.2.3 <code>nth_element</code>函数</h1><p><code>nth_element</code>是C++ STL中的<strong>部分排序函数</strong>，核心作用是快速定位容器中“第n个位置的元素”（按排序后的顺序），同时保证该元素的前后区间满足大小关系。</p>
+<h3 id="1-函数基本信息"><a href="#1-函数基本信息" class="headerlink" title="1. 函数基本信息"></a>1. 函数基本信息</h3><table>
+<thead>
+<tr>
+<th>项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数格式</td>
+<td><code>nth_element(st, k, ed)</code></td>
+</tr>
+<tr>
+<td>返回值</td>
+<td><code>void</code>（无返回值，直接修改原容器）</td>
+</tr>
+<tr>
+<td>参数要求</td>
+<td>三个迭代器：<code>st</code>（区间起始）、<code>k</code>（目标位置）、<code>ed</code>（区间结束）</td>
+</tr>
+<tr>
+<td>时间复杂度</td>
+<td>$O(n)$（仅需线性时间，效率远高于全排序）</td>
+</tr>
+</tbody></table>
+<h3 id="2-核心功能与规则"><a href="#2-核心功能与规则" class="headerlink" title="2. 核心功能与规则"></a>2. 核心功能与规则</h3><p>对区间<code>[st, ed)</code>进行部分排序后：</p>
+<ul>
+<li>目标位置<code>k</code>对应的元素，会处于“全排序后该位置应有的值”；</li>
+<li>位置<code>k</code><strong>之前</strong>的元素，均不大于该元素；</li>
+<li>位置<code>k</code><strong>之后</strong>的元素，均不小于该元素；</li>
+<li>除<code>k</code>位置外，其他元素的顺序不保证有序。</li>
+</ul>
+<h3 id="3-示例（以C-vector容器为例）"><a href="#3-示例（以C-vector容器为例）" class="headerlink" title="3. 示例（以C++ vector容器为例）"></a>3. 示例（以C++ <code>vector</code>容器为例）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">10</span>, <span class="number">18</span>, <span class="number">9</span>&#125;;</span><br><span class="line">    <span class="comment">// 对v.begin()到v.end()的区间处理，使v.begin()+3位置的元素处于正确位置</span></span><br><span class="line">    <span class="built_in">nth_element</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">begin</span>() + <span class="number">3</span>, v.<span class="built_in">end</span>());</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出结果：3 1 5 7 9 18 10</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : v) &#123;</span><br><span class="line">        cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>结果分析</strong>：</p>
+<ul>
+<li>目标位置<code>v.begin()+3</code>（即第4个元素，索引为3）的值是<code>7</code>，对应全排序（<code>1,3,5,7,9,10,18</code>）中该位置的元素；</li>
+<li><code>7</code>之前的元素（<code>3,1,5</code>）均≤<code>7</code>，之后的元素（<code>9,18,10</code>）均≥<code>7</code>；</li>
+<li>前后元素的顺序不保证有序（如后面的<code>10</code>在<code>18</code>之后）。</li>
+</ul>
+<h3 id="4-适用场景"><a href="#4-适用场景" class="headerlink" title="4. 适用场景"></a>4. 适用场景</h3><p><code>nth_element</code>适合<strong>无需全排序、仅需定位第k大&#x2F;小元素</strong>的场景，例如：</p>
+<ul>
+<li>快速找到数组的中位数；</li>
+<li>获取前k小&#x2F;大的元素集合（无需排序）。</li>
+</ul>
+<h1 id="2-2-4-例题讲解-蓝桥OJ497"><a href="#2-2-4-例题讲解-蓝桥OJ497" class="headerlink" title="2.2.4 例题讲解-蓝桥OJ497"></a>2.2.4 例题讲解-蓝桥OJ497</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小蓝给学生们组织了一场考试，卷面总分为 100 分，每个学生的得分都是一个 0 到 100 的整数。<br>请计算这次考试的最高分、最低分和平均分。</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>输入的第一行包含一个整数 $n (1≤n≤10^4)$，表示考试人数。<br>接下来 n 行，每行包含一个 0 至 100 的整数，表示一个学生的得分。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>输出三行。<br>第一行包含一个整数，表示最高分。<br>第二行包含一个整数，表示最低分。<br>第三行包含一个实数，四舍五入保留正好两位小数，表示平均分。</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><blockquote>
+<p>输入</p>
+</blockquote>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">80</span><br><span class="line">92</span><br><span class="line">56</span><br><span class="line">74</span><br><span class="line">88</span><br><span class="line">99</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出</p>
+</blockquote>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">99</span><br><span class="line">10</span><br><span class="line">71.29</span><br></pre></td></tr></table></figure>
+<h3 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h3><ul>
+<li>最大运行时间：1s</li>
+<li>最大运行内存: 256M</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">10001</span>;</span><br><span class="line"><span class="type">int</span> score[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        cin &gt;&gt; score[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//cout &lt;&lt; *max_element(score+1,score+1+n) &lt;&lt; &#x27;\n&#x27;;</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; *min_element(score+1,score+1+n) &lt;&lt; &#x27;\n&#x27;;</span></span><br><span class="line">	<span class="type">int</span> max_num = score[<span class="number">1</span>],min_num = score[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		max_num = <span class="built_in">max</span>(max_num,score[i]);</span><br><span class="line">		min_num = <span class="built_in">min</span>(min_num,score[i]); </span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; max_num &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">	cout &lt;&lt; min_num &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        sum += score[i]; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; fixed &lt;&lt; <span class="built_in">setprecision</span>(<span class="number">2</span>) &lt;&lt; <span class="number">1.0</span>*sum/n &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">	<span class="comment">//printf(&quot;%.2f\n&quot;,1.0*sum/n);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/" title="C语言历年期末真题(上半部分)">C语言历年期末真题(上半部分)</a><time datetime="2025-12-24T12:56:34.000Z" title="Created 2025-12-24 20:56:34">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">编程竞赛</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              December 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              November 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-02T13:11:50.740Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

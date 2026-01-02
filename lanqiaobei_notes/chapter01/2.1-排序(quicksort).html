@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fish的学习之旅~ | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2.1.1 sort简介sort是C++标准库中常用的排序工具，也常与string结合使用（如对字符串数组排序），其核心信息如下：  头文件依赖sort函数包含在&lt;algorithm&gt;头文件中，使用前需添加： 1#include &lt;algorithm&gt; 或直接使用万能头文件（蓝桥杯常用）： 1#include &lt;bits&#x2F;stdc++.h&gt;  功能定位sort是">
+<meta property="og:type" content="website">
+<meta property="og:title" content="fish的学习之旅~">
+<meta property="og:url" content="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.1-%E6%8E%92%E5%BA%8F(quicksort).html">
+<meta property="og:site_name" content="fish的学习之旅~">
+<meta property="og:description" content="2.1.1 sort简介sort是C++标准库中常用的排序工具，也常与string结合使用（如对字符串数组排序），其核心信息如下：  头文件依赖sort函数包含在&lt;algorithm&gt;头文件中，使用前需添加： 1#include &lt;algorithm&gt; 或直接使用万能头文件（蓝桥杯常用）： 1#include &lt;bits&#x2F;stdc++.h&gt;  功能定位sort是">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
+<meta property="article:published_time" content="2026-01-02T13:10:23.166Z">
+<meta property="article:modified_time" content="2025-12-15T14:08:30.645Z">
+<meta property="article:author" content="鱼浩琳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.1-%E6%8E%92%E5%BA%8F(quicksort).html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'fish的学习之旅~',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="2-1-1-sort简介"><a href="#2-1-1-sort简介" class="headerlink" title="2.1.1 sort简介"></a>2.1.1 <code>sort</code>简介</h1><p>sort是C++标准库中常用的排序工具，也常与string结合使用（如对字符串数组排序），其核心信息如下：</p>
+<ol>
+<li><p><strong>头文件依赖</strong><br>sort函数包含在<code>&lt;algorithm&gt;</code>头文件中，使用前需添加：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>或直接使用万能头文件（蓝桥杯常用）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>功能定位</strong><br>sort是一个<strong>函数模板</strong>，用于对指定范围的元素（如数组、vector、string等）进行排序。</p>
+</li>
+<li><p><strong>算法与复杂度</strong><br>底层采用快速排序（或其改进算法，如<code>IntroSort</code>），<strong>平均时间复杂度为<code>O(nlogn)</code></strong>，效率较高，是竞赛中排序的首选工具。</p>
+</li>
+</ol>
+<h1 id="2-1-2-sort的用法"><a href="#2-1-2-sort的用法" class="headerlink" title="2.1.2 sort的用法"></a>2.1.2 <code>sort</code>的用法</h1><h3 id="sort函数的参数格式与数组排序示例"><a href="#sort函数的参数格式与数组排序示例" class="headerlink" title="sort函数的参数格式与数组排序示例"></a>sort函数的参数格式与数组排序示例</h3><h4 id="2-1-2-1-sort函数的参数格式"><a href="#2-1-2-1-sort函数的参数格式" class="headerlink" title="2.1.2-1 sort函数的参数格式"></a>2.1.2-1 sort函数的参数格式</h4><p><code>sort</code>函数的核心参数为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(起始地址, 结束地址的下一位, *比较函数);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>起始地址</strong>：待排序区间的第一个元素地址；</li>
+<li><strong>结束地址的下一位</strong>：待排序区间最后一个元素的<strong>下一个地址</strong>（即排序范围是<code>[起始地址, 结束地址的下一位)</code>）；</li>
+<li><strong>比较函数（可选）</strong>：自定义排序规则，默认是升序排序。</li>
+</ul>
+<h4 id="2-1-2-2-数组排序的代码示例"><a href="#2-1-2-2-数组排序的代码示例" class="headerlink" title="2.1.2-2 数组排序的代码示例"></a>2.1.2-2 数组排序的代码示例</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">1000</span>];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 读取数组大小</span></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="comment">// 读取数组元素（从下标1开始存储）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) cin &gt;&gt; a[i];</span><br><span class="line">    <span class="comment">// 对数组下标1~n的元素排序</span></span><br><span class="line">    <span class="built_in">sort</span>(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 输出排序后的数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-2-3-输入输出示例"><a href="#2-1-2-3-输入输出示例" class="headerlink" title="2.1.2-3 输入输出示例"></a>2.1.2-3 输入输出示例</h4><ul>
+<li><strong>输入</strong>：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2 3 6 9 1</span><br></pre></td></tr></table></figure></li>
+<li><strong>输出</strong>：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 6 9</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-1-2-4-关键说明"><a href="#2-1-2-4-关键说明" class="headerlink" title="2.1.2-4 关键说明"></a>2.1.2-4 关键说明</h4><ol>
+<li><strong>数组下标与排序范围</strong>：示例中数组从下标1开始存储，因此<code>sort</code>的起始地址是<code>a+1</code>，结束地址的下一位是<code>a+n+1</code>，确保排序范围覆盖<code>a[1]~a[n]</code>。</li>
+<li><strong>默认排序规则</strong>：未传入比较函数时，<code>sort</code>默认对数组进行<strong>升序排序</strong>，因此输入的<code>2 3 6 9 1</code>会被排序为<code>1 2 3 6 9</code>。</li>
+</ol>
+<h3 id="sort对vector容器的排序用法"><a href="#sort对vector容器的排序用法" class="headerlink" title="sort对vector容器的排序用法"></a>sort对vector容器的排序用法</h3><h4 id="2-1-2-5-sort函数与vector的结合格式"><a href="#2-1-2-5-sort函数与vector的结合格式" class="headerlink" title="2.1.2-5 sort函数与vector的结合格式"></a>2.1.2-5 sort函数与vector的结合格式</h4><p><code>sort</code>函数对<code>vector</code>排序时，通过<strong>迭代器</strong>指定排序范围：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sort</span>(容器.<span class="built_in">begin</span>(), 容器.<span class="built_in">end</span>(), *比较函数);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>begin()</code>：返回容器第一个元素的迭代器（对应起始地址）；</li>
+<li><code>end()</code>：返回容器最后一个元素的<strong>下一个位置</strong>的迭代器（对应结束地址的下一位）；</li>
+<li>比较函数（可选）：默认升序排序。</li>
+</ul>
+<h4 id="2-1-2-6-vector排序的代码示例"><a href="#2-1-2-6-vector排序的代码示例" class="headerlink" title="2.1.2-6 vector排序的代码示例"></a>2.1.2-6 vector排序的代码示例</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化vector，元素为&#123;5, 1, 3, 9, 11&#125;</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">11</span>&#125;;</span><br><span class="line">    <span class="comment">// 对vector的全部元素排序</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// 输出排序后的vector</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); ++i) cout &lt;&lt; v[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-2-6-输入输出示例"><a href="#2-1-2-6-输入输出示例" class="headerlink" title="2.1.2-6 输入输出示例"></a>2.1.2-6 输入输出示例</h4><ul>
+<li><strong>输出</strong>：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 3 5 9 11</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="2-1-3-自定义比较函数"><a href="#2-1-3-自定义比较函数" class="headerlink" title="2.1.3 自定义比较函数"></a>2.1.3 自定义比较函数</h1><h4 id="2-1-3-1-自定义比较的核心逻辑"><a href="#2-1-3-1-自定义比较的核心逻辑" class="headerlink" title="2.1.3-1 自定义比较的核心逻辑"></a>2.1.3-1 自定义比较的核心逻辑</h4><p><code>sort</code>默认按<strong>升序</strong>排序（基于<code>&lt;</code>运算符），若需自定义规则（如降序），可传入第三个参数——<strong>比较函数</strong>，函数返回值表示“前一个元素是否应排在后一个元素之前”。</p>
+<h4 id="2-1-3-2-代码示例（降序排序）"><a href="#2-1-3-2-代码示例（降序排序）" class="headerlink" title="2.1.3-2 代码示例（降序排序）"></a>2.1.3-2 代码示例（降序排序）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义比较函数：实现降序排序</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> <span class="type">int</span> &amp;u, <span class="type">const</span> <span class="type">int</span> &amp;v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> u &gt; v; <span class="comment">// u &gt; v时，u排在v之前</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>), cin.<span class="built_in">tie</span>(<span class="number">0</span>), cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 初始化vector</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">11</span>&#125;;</span><br><span class="line">    <span class="comment">// 传入比较函数cmp，实现降序排序</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), cmp);</span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); ++i) cout &lt;&lt; v[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11 9 5 3 1</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-3-3-关键说明"><a href="#2-1-3-3-关键说明" class="headerlink" title="2.1.3-3 关键说明"></a>2.1.3-3 关键说明</h4><ol>
+<li><strong>比较函数的规则</strong>：<code>cmp(u, v)</code>返回<code>true</code>时，<code>u</code>会被排在<code>v</code>之前；示例中<code>u &gt; v</code>为<code>true</code>，因此大的元素排在前面，实现降序。</li>
+<li><strong>参数的合理性</strong>：比较函数的参数使用<code>const int &amp;</code>（常量引用），避免拷贝开销，同时保证不会修改原元素。</li>
+<li><strong>适用场景</strong>：除降序外，还可实现更复杂的规则（如按绝对值排序、按字符串长度排序），只需修改比较函数的返回逻辑。</li>
+</ol>
+<h3 id="sort的自定义比较规则（lambda表达式实现）"><a href="#sort的自定义比较规则（lambda表达式实现）" class="headerlink" title="sort的自定义比较规则（lambda表达式实现）"></a>sort的自定义比较规则（lambda表达式实现）</h3><h4 id="2-1-3-4-lambda表达式的作用"><a href="#2-1-3-4-lambda表达式的作用" class="headerlink" title="2.1.3-4 lambda表达式的作用"></a>2.1.3-4 lambda表达式的作用</h4><p><code>lambda表达式</code>是一种匿名函数，可直接嵌入<code>sort</code>的第三个参数中，用于定义临时的比较规则，无需单独定义函数，更简洁灵活。</p>
+<h4 id="2-1-3-5-代码示例（降序排序）"><a href="#2-1-3-5-代码示例（降序排序）" class="headerlink" title="2.1.3-5 代码示例（降序排序）"></a>2.1.3-5 代码示例（降序排序）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化vector</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">11</span>&#125;;</span><br><span class="line">    <span class="comment">// 用lambda表达式作为比较规则，实现降序排序</span></span><br><span class="line">    <span class="built_in">sort</span>(v.<span class="built_in">begin</span>(), v.<span class="built_in">end</span>(), [](<span class="type">const</span> <span class="type">int</span> &amp;u, <span class="type">const</span> <span class="type">int</span> &amp;v) &#123;</span><br><span class="line">        <span class="keyword">return</span> u &gt; v; <span class="comment">// u &gt; v时，u排在v之前</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); ++i) cout &lt;&lt; v[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11 9 5 3 1</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-3-6-关键说明"><a href="#2-1-3-6-关键说明" class="headerlink" title="2.1.3-6 关键说明"></a>2.1.3-6 关键说明</h4><ol>
+<li><strong>lambda的语法格式</strong>：<code>[] (参数列表) { 函数体 }</code>，其中<code>[]</code>是捕获列表（此处为空，无需外部变量），参数列表与普通比较函数一致。<blockquote>
+<p><em><strong>[ ]空表示为拷贝类型，[&amp;]表示为引用类型</strong></em></p>
+</blockquote>
+</li>
+<li><strong>与普通函数的对比</strong>：lambda表达式省去了单独定义<code>cmp</code>函数的步骤，适合临时、简单的比较规则；若比较逻辑复杂，仍建议用普通函数提高可读性。</li>
+<li><strong>适用场景</strong>：除降序外，lambda也可实现复杂规则（如按绝对值排序），只需修改函数体的返回逻辑。</li>
+</ol>
+<h3 id="结构体的排序：重载小于号（operator"><a href="#结构体的排序：重载小于号（operator" class="headerlink" title="结构体的排序：重载小于号（operator &lt;）"></a>结构体的排序：重载小于号（<code>operator &lt;</code>）</h3><h4 id="2-1-3-7-核心逻辑"><a href="#2-1-3-7-核心逻辑" class="headerlink" title="2.1.3-7 核心逻辑"></a>2.1.3-7 核心逻辑</h4><p>当需要对结构体进行排序时，可在结构体内<strong>重载小于号运算符（<code>operator &lt;</code>）</strong>，使<code>sort</code>默认按自定义规则排序。这种方式无需额外传入比较函数，更简洁。</p>
+<h4 id="2-1-3-8-代码示例（多关键字排序）"><a href="#2-1-3-8-代码示例（多关键字排序）" class="headerlink" title="2.1.3-8 代码示例（多关键字排序）"></a>2.1.3-8 代码示例（多关键字排序）</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义结构体Node</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">    <span class="type">int</span> u, v;</span><br><span class="line">    <span class="comment">// 重载小于号：自定义排序规则</span></span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> Node &amp;m) <span class="type">const</span> &#123;</span><br><span class="line">        <span class="comment">// 排序规则：以u为第一关键字升序，u相同时以v为第二关键字升序</span></span><br><span class="line">        <span class="keyword">return</span> u == m.u ? v &lt; m.v : u &lt; m.u;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化结构体数组</span></span><br><span class="line">    vector&lt;Node&gt; nodes = &#123;&#123;<span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">1</span>, <span class="number">5</span>&#125;, &#123;<span class="number">2</span>, <span class="number">1</span>&#125;&#125;;</span><br><span class="line">    <span class="comment">// 直接sort，默认使用重载的operator &lt;</span></span><br><span class="line">    <span class="built_in">sort</span>(nodes.<span class="built_in">begin</span>(), nodes.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// 输出排序结果</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;node : nodes) &#123;</span><br><span class="line">        cout &lt;&lt; node.u &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; node.v &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 5</span><br><span class="line">2 1</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<h4 id="2-1-3-9-关键说明"><a href="#2-1-3-9-关键说明" class="headerlink" title="2.1.3-9 关键说明"></a>2.1.3-9 关键说明</h4><ol>
+<li><strong>重载规则</strong>：<code>operator &lt; (const Node &amp;m) const</code>中，<code>const</code>保证不修改自身和传入的结构体，返回值表示“当前对象是否应排在<code>m</code>之前”。</li>
+<li><strong>多关键字排序</strong>：示例中先按<code>u</code>升序，<code>u</code>相同时按<code>v</code>升序，符合竞赛中常见的多条件排序需求。</li>
+<li><strong>替代方案</strong>：也可通过外部比较函数或lambda表达式实现结构体排序，但重载<code>operator &lt;</code>更贴合结构体的“原生排序规则”，代码更简洁。</li>
+</ol>
+<h1 id="2-1-4-例题讲解-排序"><a href="#2-1-4-例题讲解-排序" class="headerlink" title="2.1.4 例题讲解 排序"></a>2.1.4 例题讲解 排序</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个长度为 $N$ 的数组 $A$，请你先从小到大输出它的每个元素，再从大到小输出它的每个元素。</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行包含一个整数 $N$。</p>
+<p>第二行包含 $N$ 个整数 $a_1,…,a_n$，表示数组 $A$ 的元素。</p>
+<p>$1≤N≤5×10^5$,$−10^9≤a_i≤10^9$。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>输出共两行，每行包含 $N$ 个整数，表示答案。</p>
+<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h4><blockquote>
+<p>输入</p>
+</blockquote>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 3 2 6 5</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出</p>
+</blockquote>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 5 6</span><br><span class="line">6 5 3 2 1</span><br></pre></td></tr></table></figure>
+<h3 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h3><ul>
+<li>最大运行时间：3s</li>
+<li>最大运行内存: 128M</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">      cin &gt;&gt; a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">sort</span>(a,a+n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">  <span class="comment">// 升序输出数组：&quot; \n&quot;[i == n-1] 是一个巧妙的分隔符处理</span></span><br><span class="line">      cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot; \n&quot;</span>[i == n<span class="number">-1</span>];</span><br><span class="line">      <span class="comment">// 当i是最后一个元素时，取&quot;\n&quot;；否则取&quot; &quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> i = n<span class="number">-1</span>;i&gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">      cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot; \n&quot;</span>[i == <span class="number">0</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 【可选】另一种降序方式：直接用sort实现降序，代码更直观</span></span><br><span class="line">    <span class="comment">// sort(a.begin(), a.end(), greater&lt;int&gt;());</span></span><br><span class="line">    <span class="comment">// for (int num : a) &#123;</span></span><br><span class="line">    <span class="comment">//     cout &lt;&lt; num &lt;&lt; &quot; &quot;;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// cout &lt;&lt; endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/" title="C语言历年期末真题(上半部分)">C语言历年期末真题(上半部分)</a><time datetime="2025-12-24T12:56:34.000Z" title="Created 2025-12-24 20:56:34">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">编程竞赛</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              December 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              November 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-02T13:11:50.740Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

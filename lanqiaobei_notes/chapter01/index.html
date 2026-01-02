@@ -1,17 +1,14 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蓝桥杯备赛笔记-第一章 语言基础 | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="蓝桥杯备赛笔记的语言基础章节，涵盖C++基础格式、输入输出、string使用等核心知识点。">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fish的学习之旅~ | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="以下是更新后的index内容（已添加第二章的子目录和子知识点）：  title: 蓝桥杯备赛笔记-第一章 语言基础 &amp; 第二章 基础算法date: 2025-12-15 21:06:00tags:  - 蓝桥杯  - C++  - 语言基础  - 基础算法categories:  - 编程竞赛toc: truedescription: 蓝桥杯备赛笔记，涵盖C++语言基础与常用基础算法，是备">
 <meta property="og:type" content="website">
-<meta property="og:title" content="蓝桥杯备赛笔记-第一章 语言基础">
+<meta property="og:title" content="fish的学习之旅~">
 <meta property="og:url" content="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/index.html">
 <meta property="og:site_name" content="fish的学习之旅~">
-<meta property="og:description" content="蓝桥杯备赛笔记的语言基础章节，涵盖C++基础格式、输入输出、string使用等核心知识点。">
+<meta property="og:description" content="以下是更新后的index内容（已添加第二章的子目录和子知识点）：  title: 蓝桥杯备赛笔记-第一章 语言基础 &amp; 第二章 基础算法date: 2025-12-15 21:06:00tags:  - 蓝桥杯  - C++  - 语言基础  - 基础算法categories:  - 编程竞赛toc: truedescription: 蓝桥杯备赛笔记，涵盖C++语言基础与常用基础算法，是备">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
-<meta property="article:published_time" content="2025-12-15T13:06:00.000Z">
-<meta property="article:modified_time" content="2025-12-15T14:45:29.797Z">
+<meta property="article:published_time" content="2026-01-02T13:11:14.087Z">
+<meta property="article:modified_time" content="2026-01-02T13:11:14.087Z">
 <meta property="article:author" content="鱼浩琳">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="蓝桥杯">
-<meta property="article:tag" content="语言基础">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
     (() => {
@@ -142,12 +139,14 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '蓝桥杯备赛笔记-第一章 语言基础',
+  title: 'fish的学习之旅~',
   isHighlightShrink: false,
-  isToc: true,
+  isToc: false,
   pageType: 'page'
 }</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">蓝桥杯备赛笔记-第一章 语言基础</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="第一章-语言基础"><a href="#第一章-语言基础" class="headerlink" title="第一章 语言基础"></a>第一章 语言基础</h1><p>本章是蓝桥杯备赛的基础内容，主要讲解C++语言的核心语法，是后续算法实现的必备知识。</p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><p>以下是更新后的<code>index</code>内容（已添加第二章的子目录和子知识点）：</p>
+<hr>
+<h2 id="title-蓝桥杯备赛笔记-第一章-语言基础-第二章-基础算法date-2025-12-15-21-06-00tags-蓝桥杯-C-语言基础-基础算法categories-编程竞赛toc-truedescription-蓝桥杯备赛笔记，涵盖C-语言基础与常用基础算法，是备赛的核心知识点集合。"><a href="#title-蓝桥杯备赛笔记-第一章-语言基础-第二章-基础算法date-2025-12-15-21-06-00tags-蓝桥杯-C-语言基础-基础算法categories-编程竞赛toc-truedescription-蓝桥杯备赛笔记，涵盖C-语言基础与常用基础算法，是备赛的核心知识点集合。" class="headerlink" title="title: 蓝桥杯备赛笔记-第一章 语言基础 &amp; 第二章 基础算法date: 2025-12-15 21:06:00tags:  - 蓝桥杯  - C++  - 语言基础  - 基础算法categories:  - 编程竞赛toc: truedescription: 蓝桥杯备赛笔记，涵盖C++语言基础与常用基础算法，是备赛的核心知识点集合。"></a>title: 蓝桥杯备赛笔记-第一章 语言基础 &amp; 第二章 基础算法<br>date: 2025-12-15 21:06:00<br>tags:<br>  - 蓝桥杯<br>  - C++<br>  - 语言基础<br>  - 基础算法<br>categories:<br>  - 编程竞赛<br>toc: true<br>description: 蓝桥杯备赛笔记，涵盖C++语言基础与常用基础算法，是备赛的核心知识点集合。</h2><h1 id="第一章-语言基础"><a href="#第一章-语言基础" class="headerlink" title="第一章 语言基础"></a>第一章 语言基础</h1><p>本章是蓝桥杯备赛的基础内容，主要讲解C++语言的核心语法，是后续算法实现的必备知识。</p>
 <h2 id="📚-章节子目录"><a href="#📚-章节子目录" class="headerlink" title="📚 章节子目录"></a>📚 章节子目录</h2><table>
 <thead>
 <tr>
@@ -173,28 +172,98 @@
 </tr>
 </tbody></table>
 <h2 id="📖-子知识点内容"><a href="#📖-子知识点内容" class="headerlink" title="📖 子知识点内容"></a>📖 子知识点内容</h2><h3 id="1-1-C-基础格式与版本选择"><a href="#1-1-C-基础格式与版本选择" class="headerlink" title="1.1 C++基础格式与版本选择"></a>1.1 C++基础格式与版本选择</h3><blockquote>
-<p>对应笔记：[C++基础格式与版本选择](.&#x2F;1.1 C++基础格式与版本选择.html)</p>
+<p>对应笔记：<a href="./1.1-C++%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9.html">C++基础格式与版本选择</a></p>
 </blockquote>
 <p>讲解蓝桥杯比赛中推荐的代码框架、头文件选择（如<code>#include &lt;bits/stdc++.h&gt;</code>），以及比赛支持的C++版本（通常为C++11及以上）。</p>
 <p>点击上方链接查看完整内容~</p>
 <h3 id="1-2-输入输出"><a href="#1-2-输入输出" class="headerlink" title="1.2 输入输出"></a>1.2 输入输出</h3><blockquote>
-<p>对应笔记：[输入输出](.&#x2F;1.2 输入输出.html)</p>
+<p>对应笔记：<a href="./1.2-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.html">输入输出</a></p>
 </blockquote>
 <p>对比cin&#x2F;cout与scanf&#x2F;printf的使用场景，讲解输入输出的效率优化技巧（如<code>ios::sync_with_stdio(false)</code>），解决大数据量输入的超时问题。</p>
 <p>点击上方链接查看完整内容~</p>
 <h3 id="1-3-string的使用"><a href="#1-3-string的使用" class="headerlink" title="1.3 string的使用"></a>1.3 string的使用</h3><blockquote>
-<p>对应笔记：[string的使用](.&#x2F;1.3 string的使用.html)</p>
+<p>对应笔记：<a href="./1.3-string%E7%9A%84%E4%BD%BF%E7%94%A8.html">string的使用</a></p>
 </blockquote>
 <p>详细介绍C++ string类的常用方法：定义初始化、拼接、截取（substr）、查找（find）、遍历方式等，结合蓝桥杯真题案例讲解实际应用。</p>
 <p>点击上方链接查看完整内容~</p>
-</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">第一章 语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E7%AB%A0%E8%8A%82%E5%AD%90%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">📚 章节子目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E5%AD%90%E7%9F%A5%E8%AF%86%E7%82%B9%E5%86%85%E5%AE%B9"><span class="toc-number">1.2.</span> <span class="toc-text">📖 子知识点内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-C-%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F%E4%B8%8E%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.1 C++基础格式与版本选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-string%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 string的使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/" title="C语言历年期末真题(上半部分)">C语言历年期末真题(上半部分)</a><time datetime="2025-12-24T12:56:34.000Z" title="Created 2025-12-24 20:56:34">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+<h1 id="第二章-基础算法"><a href="#第二章-基础算法" class="headerlink" title="第二章 基础算法"></a>第二章 基础算法</h1><p>本章讲解蓝桥杯常考的基础算法，是竞赛中解决问题的核心工具，涵盖排序、查找、字符串处理等高频考点。</p>
+<h2 id="📚-章节子目录-1"><a href="#📚-章节子目录-1" class="headerlink" title="📚 章节子目录"></a>📚 章节子目录</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>知识点</th>
+<th>内容说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2.1</td>
+<td><a href="./2.1-%E6%8E%92%E5%BA%8F(quicksort).html">排序(quicksort)</a></td>
+<td>快速排序的原理、实现及C++ STL排序工具（sort）的使用</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td><a href="./2.2-%E6%9C%80%E5%80%BC%E6%9F%A5%E6%89%BE.html">最值查找</a></td>
+<td>数组&#x2F;容器中最大值、最小值的查找方法（遍历、STL算法）</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td><a href="./2.3-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">二分查找</a></td>
+<td>二分查找的原理、实现（递归&#x2F;非递归）及STL工具（lower_bound&#x2F;upper_bound）</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td><a href="./2.4-%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2.html">大小写转换</a></td>
+<td>字符串大小写转换的方法（ASCII码操作、STL算法）</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td><a href="./2.5-%E5%85%A8%E6%8E%92%E5%88%97.html">全排列</a></td>
+<td>全排列的生成方法（递归、STL工具next_permutation&#x2F;prev_permutation）</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td><a href="./2.6-%E5%85%B6%E4%BB%96%E5%BA%93%E5%87%BD%E6%95%B0.html">其他库函数</a></td>
+<td>常用STL库函数（swap&#x2F;reverse&#x2F;unique等）的使用与场景</td>
+</tr>
+</tbody></table>
+<h2 id="📖-子知识点内容-1"><a href="#📖-子知识点内容-1" class="headerlink" title="📖 子知识点内容"></a>📖 子知识点内容</h2><h3 id="2-1-排序-quicksort"><a href="#2-1-排序-quicksort" class="headerlink" title="2.1 排序(quicksort)"></a>2.1 排序(quicksort)</h3><blockquote>
+<p>对应笔记：<a href="./2.1-%E6%8E%92%E5%BA%8F(quicksort).html">排序(quicksort)</a></p>
+</blockquote>
+<p>讲解快速排序的分治思想与实现，同时介绍C++ STL中<code>sort</code>函数的使用（默认升序、自定义比较规则），结合蓝桥杯真题说明排序的应用场景。</p>
+<p>点击上方链接查看完整内容~</p>
+<h3 id="2-2-最值查找"><a href="#2-2-最值查找" class="headerlink" title="2.2 最值查找"></a>2.2 最值查找</h3><blockquote>
+<p>对应笔记：<a href="./2.2-%E6%9C%80%E5%80%BC%E6%9F%A5%E6%89%BE.html">最值查找</a></p>
+</blockquote>
+<p>介绍数组&#x2F;容器中最值的两种查找方式：遍历比较、STL算法（<code>max_element</code>&#x2F;<code>min_element</code>），讲解不同场景下的选择技巧。</p>
+<p>点击上方链接查看完整内容~</p>
+<h3 id="2-3-二分查找"><a href="#2-3-二分查找" class="headerlink" title="2.3 二分查找"></a>2.3 二分查找</h3><blockquote>
+<p>对应笔记：<a href="./2.3-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">二分查找</a></p>
+</blockquote>
+<p>讲解二分查找的适用条件（有序序列），实现递归与非递归版本，同时介绍STL中<code>lower_bound</code>（查找第一个≥目标值）、<code>upper_bound</code>（查找第一个&gt;目标值）的使用。</p>
+<p>点击上方链接查看完整内容~</p>
+<h3 id="2-4-大小写转换"><a href="#2-4-大小写转换" class="headerlink" title="2.4 大小写转换"></a>2.4 大小写转换</h3><blockquote>
+<p>对应笔记：<a href="./2.4-%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2.html">大小写转换</a></p>
+</blockquote>
+<p>讲解字符串大小写转换的方法：通过ASCII码加减（如<code>ch - &#39;a&#39; + &#39;A&#39;</code>）、STL算法（<code>toupper</code>&#x2F;<code>tolower</code>），结合案例说明实际应用。</p>
+<p>点击上方链接查看完整内容~</p>
+<h3 id="2-5-全排列"><a href="#2-5-全排列" class="headerlink" title="2.5 全排列"></a>2.5 全排列</h3><blockquote>
+<p>对应笔记：<a href="./2.5-%E5%85%A8%E6%8E%92%E5%88%97.html">全排列</a></p>
+</blockquote>
+<p>介绍全排列的生成方式：递归实现、STL工具<code>next_permutation</code>&#x2F;<code>prev_permutation</code>的使用，说明排列生成的字典序规则。</p>
+<p>点击上方链接查看完整内容~</p>
+<h3 id="2-6-其他库函数"><a href="#2-6-其他库函数" class="headerlink" title="2.6 其他库函数"></a>2.6 其他库函数</h3><blockquote>
+<p>对应笔记：<a href="./2.6-%E5%85%B6%E4%BB%96%E5%BA%93%E5%87%BD%E6%95%B0.html">其他库函数</a></p>
+</blockquote>
+<p>总结蓝桥杯常用的STL库函数：<code>swap</code>（交换）、<code>reverse</code>（反转）、<code>unique</code>（去重）等，讲解每个函数的原理、参数与使用场景。</p>
+<p>点击上方链接查看完整内容~</p>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/" title="C语言历年期末真题(上半部分)">C语言历年期末真题(上半部分)</a><time datetime="2025-12-24T12:56:34.000Z" title="Created 2025-12-24 20:56:34">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>Categories</span>
             
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">编程竞赛</span><span class="card-category-list-count">1</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>Archives</span>
@@ -222,7 +291,7 @@
         </li>
       
     </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-12-24T13:49:41.421Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-02T13:11:50.740Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
   const loadMathjax = () => {
     if (!window.MathJax) {
       window.MathJax = {

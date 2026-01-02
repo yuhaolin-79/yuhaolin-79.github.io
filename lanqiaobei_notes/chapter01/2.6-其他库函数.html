@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fish的学习之旅~ | fish的学习之旅~</title><meta name="author" content="鱼浩琳"><meta name="copyright" content="鱼浩琳"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2.6.1 memset()函数（C&#x2F;C++）一、函数核心定位memset()是C&#x2F;C++中用于批量设置内存块值的函数，通常用于初始化数组、结构体等数据结构，定义在&lt;cstring&gt;（C++）或&lt;string.h&gt;（C）头文件中。 二、函数原型1void* memset(void* ptr, int value, size_t num); 参数说明：">
+<meta property="og:type" content="website">
+<meta property="og:title" content="fish的学习之旅~">
+<meta property="og:url" content="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.6-%E5%85%B6%E4%BB%96%E5%BA%93%E5%87%BD%E6%95%B0.html">
+<meta property="og:site_name" content="fish的学习之旅~">
+<meta property="og:description" content="2.6.1 memset()函数（C&#x2F;C++）一、函数核心定位memset()是C&#x2F;C++中用于批量设置内存块值的函数，通常用于初始化数组、结构体等数据结构，定义在&lt;cstring&gt;（C++）或&lt;string.h&gt;（C）头文件中。 二、函数原型1void* memset(void* ptr, int value, size_t num); 参数说明：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg">
+<meta property="article:published_time" content="2026-01-02T13:11:06.308Z">
+<meta property="article:modified_time" content="2026-01-02T13:04:39.495Z">
+<meta property="article:author" content="鱼浩琳">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuhaolin-79.github.io/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yuhaolin-79.github.io/lanqiaobei_notes/chapter01/2.6-%E5%85%B6%E4%BB%96%E5%BA%93%E5%87%BD%E6%95%B0.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'fish的学习之旅~',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/transpancy.css"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-90f557e990a0cfbb65da45bb1ffaa812_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/001.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">fish的学习之旅~</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-house"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa-solid fa-box-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa-solid fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa-solid fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa-solid fa-user"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa-solid fa-comments"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title"></h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="2-6-1-memset-函数（C-C-）"><a href="#2-6-1-memset-函数（C-C-）" class="headerlink" title="2.6.1 memset()函数（C&#x2F;C++）"></a>2.6.1 <code>memset()</code>函数（C&#x2F;C++）</h1><h2 id="一、函数核心定位"><a href="#一、函数核心定位" class="headerlink" title="一、函数核心定位"></a>一、函数核心定位</h2><p><code>memset()</code>是C&#x2F;C++中用于<strong>批量设置内存块值</strong>的函数，通常用于初始化数组、结构体等数据结构，定义在<code>&lt;cstring&gt;</code>（C++）或<code>&lt;string.h&gt;</code>（C）头文件中。</p>
+<h2 id="二、函数原型"><a href="#二、函数原型" class="headerlink" title="二、函数原型"></a>二、函数原型</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">memset</span><span class="params">(<span class="type">void</span>* ptr, <span class="type">int</span> value, <span class="type">size_t</span> num)</span>;</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>ptr</code>：指向要操作的内存块的指针（如数组、结构体的首地址）；</li>
+<li><code>value</code>：要设置的<strong>字节值</strong>（以<code>int</code>传入，实际会转换为<code>unsigned char</code>处理）；</li>
+<li><code>num</code>：要设置的<strong>字节数</strong>（需明确内存块的总字节长度）。</li>
+</ul>
+<h2 id="三、核心特性与注意事项"><a href="#三、核心特性与注意事项" class="headerlink" title="三、核心特性与注意事项"></a>三、核心特性与注意事项</h2><ol>
+<li><p><strong>按字节操作</strong><br><code>memset()</code>是<strong>逐字节</strong>设置内存值，因此仅适合初始化“每个字节值相同”的场景：</p>
+<ul>
+<li>正确场景：初始化数组为0（<code>memset(arr, 0, sizeof(arr))</code>）、初始化字符数组为某字符（如<code>memset(str, &#39;a&#39;, 5)</code>，或者初始化为<code>-1</code>也可以，计算机中<code>-1</code>的补码是全1的</li>
+<li>错误场景：初始化<code>int</code>数组为1（<code>memset(arr, 1, sizeof(arr))</code>会将每个字节设为1，<code>int</code>类型（4字节）会变成<code>0x01010101</code>而非1）。</li>
+</ul>
+</li>
+<li><p><strong>返回值</strong><br>返回传入的<code>ptr</code>指针本身，方便链式调用（实际很少使用）。</p>
+</li>
+</ol>
+<h2 id="四、典型使用示例"><a href="#四、典型使用示例" class="headerlink" title="四、典型使用示例"></a>四、典型使用示例</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 示例1：初始化字符数组</span></span><br><span class="line">    <span class="type">char</span> str[<span class="number">10</span>];</span><br><span class="line">    <span class="built_in">memset</span>(str, <span class="string">&#x27;x&#x27;</span>, <span class="number">5</span>); <span class="comment">// 将前5个字节设为&#x27;x&#x27;</span></span><br><span class="line">    str[<span class="number">5</span>] = <span class="string">&#x27;\0&#x27;</span>;       <span class="comment">// 手动添加字符串结束符</span></span><br><span class="line">    cout &lt;&lt; str &lt;&lt; endl; <span class="comment">// 输出：xxxxx</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 示例2：初始化int数组为0</span></span><br><span class="line">    <span class="type">int</span> arr[<span class="number">4</span>];</span><br><span class="line">    <span class="built_in">memset</span>(arr, <span class="number">0</span>, <span class="built_in">sizeof</span>(arr)); <span class="comment">// 按字节设为0，int数组整体为0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">        cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;   <span class="comment">// 输出：0 0 0 0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>错误案例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">1</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">bitset</span>&lt;<span class="number">32</span>&gt;(a[i]) &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">00000001000000010000000100000001 </span><br><span class="line">00000001000000010000000100000001</span><br><span class="line">00000001000000010000000100000001</span><br><span class="line">00000001000000010000000100000001</span><br><span class="line">00000001000000010000000100000001</span><br></pre></td></tr></table></figure>
+<p>有时也初始化为<code>0x3f3f3f3f</code>作为较大值使用，写的时候直接<code>0x3f</code>用<code>memset</code>就好</p>
+<h2 id="五、适用场景"><a href="#五、适用场景" class="headerlink" title="五、适用场景"></a>五、适用场景</h2><ul>
+<li>初始化数组、缓冲区为0（最常用场景）；</li>
+<li>清空字符数组（如重置字符串为某字符）；</li>
+<li>批量填充简单内存块（需保证每个字节值一致）。</li>
+</ul>
+<h1 id="2-6-2-swap-函数（C-STL）"><a href="#2-6-2-swap-函数（C-STL）" class="headerlink" title="2.6.2 swap()函数（C++ STL）"></a>2.6.2 <code>swap()</code>函数（C++ STL）</h1><h2 id="一、核心定位"><a href="#一、核心定位" class="headerlink" title="一、核心定位"></a>一、核心定位</h2><p><code>swap()</code>是C++标准库中的<strong>通用交换函数</strong>，定义在对应头文件（如<code>&lt;algorithm&gt;</code>、<code>&lt;utility&gt;</code>，C++11后可直接通过<code>std</code>命名空间使用），用于交换两个变量的值，支持任意类型（基本类型、自定义类型）。</p>
+<h2 id="二、函数原理与参数"><a href="#二、函数原理与参数" class="headerlink" title="二、函数原理与参数"></a>二、函数原理与参数</h2><h3 id="1-参数形式"><a href="#1-参数形式" class="headerlink" title="1. 参数形式"></a>1. 参数形式</h3><p>函数原型（模板形式）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(T&amp; a, T&amp; b)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>a</code>&#x2F;<code>b</code>：待交换变量的<strong>引用</strong>（通过引用直接操作原变量，避免拷贝开销）。</li>
+</ul>
+<h3 id="2-交换逻辑"><a href="#2-交换逻辑" class="headerlink" title="2. 交换逻辑"></a>2. 交换逻辑</h3><p>通过“临时变量”实现交换：</p>
+<ol>
+<li>将<code>a</code>的值存入临时变量；</li>
+<li>将<code>b</code>的值赋给<code>a</code>；</li>
+<li>将临时变量的值赋给<code>b</code>。</li>
+</ol>
+<h2 id="三、核心特性"><a href="#三、核心特性" class="headerlink" title="三、核心特性"></a>三、核心特性</h2><ol>
+<li><strong>通用性</strong>：支持任意类型的变量交换，包括：<ul>
+<li>基本类型（如<code>int</code>、<code>double</code>）；</li>
+<li>自定义类型（如结构体、类对象）。</li>
+</ul>
+</li>
+<li><strong>高效性</strong>：对基本类型直接交换值；对复杂类型（如容器）通常会调用其内部优化的<code>swap</code>方法（避免深拷贝）。</li>
+</ol>
+<h2 id="四、使用示例"><a href="#四、使用示例" class="headerlink" title="四、使用示例"></a>四、使用示例</h2><h3 id="1-交换基本类型"><a href="#1-交换基本类型" class="headerlink" title="1. 交换基本类型"></a>1. 交换基本类型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line">    <span class="type">int</span> b = <span class="number">20</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;交换前：a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;, b=&quot;</span> &lt;&lt; b &lt;&lt; endl; <span class="comment">// 输出：交换前：a=10, b=20</span></span><br><span class="line">    </span><br><span class="line">    std::<span class="built_in">swap</span>(a, b); <span class="comment">// 调用std::swap</span></span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;交换后：a=&quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;, b=&quot;</span> &lt;&lt; b &lt;&lt; endl; <span class="comment">// 输出：交换后：a=20, b=10</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-交换自定义类型"><a href="#2-交换自定义类型" class="headerlink" title="2. 交换自定义类型"></a>2. 交换自定义类型</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Point p1 = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">    Point p2 = &#123;<span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    std::<span class="built_in">swap</span>(p1, p2);</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p1: (&quot;</span> &lt;&lt; p<span class="number">1.</span>x &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; p<span class="number">1.</span>y &lt;&lt; <span class="string">&quot;)&quot;</span> &lt;&lt; endl; <span class="comment">// 输出：p1: (3,4)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="五、使用注意"><a href="#五、使用注意" class="headerlink" title="五、使用注意"></a>五、使用注意</h2><ul>
+<li>若使用<code>using namespace std;</code>，可直接写<code>swap(a, b)</code>；否则需写<code>std::swap(a, b)</code>；</li>
+<li>对于自定义类，若需要更高效的交换逻辑，可自行重载<code>swap</code>函数（通常配合移动语义优化）。</li>
+</ul>
+<h1 id="2-6-3-reverse-函数（C-STL）"><a href="#2-6-3-reverse-函数（C-STL）" class="headerlink" title="2.6.3 reverse()函数（C++ STL）"></a>2.6.3 <code>reverse()</code>函数（C++ STL）</h1><h2 id="一、核心定位-1"><a href="#一、核心定位-1" class="headerlink" title="一、核心定位"></a>一、核心定位</h2><p><code>reverse()</code>是C++标准库中用于<strong>反转容器元素顺序</strong>的函数，定义在<code>&lt;algorithm&gt;</code>头文件中，适用于所有支持双向迭代器的容器（如<code>vector</code>、<code>string</code>、数组等）。</p>
+<h2 id="二、函数原型与参数"><a href="#二、函数原型与参数" class="headerlink" title="二、函数原型与参数"></a>二、函数原型与参数</h2><p>函数以模板形式定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> BidirIt&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">reverse</span><span class="params">(BidirIt first, BidirIt last)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>first</code>：容器中要反转的<strong>起始迭代器</strong>（包含此位置元素）；</li>
+<li><code>last</code>：容器中要反转的<strong>结束迭代器</strong>（不包含此位置元素）。</li>
+</ul>
+<h2 id="三、核心特性-1"><a href="#三、核心特性-1" class="headerlink" title="三、核心特性"></a>三、核心特性</h2><ol>
+<li><strong>操作范围</strong>：仅反转<code>[first, last)</code>区间内的元素，不影响区间外的内容；</li>
+<li><strong>原地反转</strong>：直接修改原容器的元素顺序，无需额外空间；</li>
+<li><strong>通用性</strong>：支持任意双向迭代器容器（如<code>vector</code>、<code>string</code>、普通数组）。</li>
+</ol>
+<h2 id="四、使用示例-1"><a href="#四、使用示例-1" class="headerlink" title="四、使用示例"></a>四、使用示例</h2><h3 id="1-反转vector容器"><a href="#1-反转vector容器" class="headerlink" title="1. 反转vector容器"></a>1. 反转<code>vector</code>容器</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;反转前：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) cout &lt;&lt; num &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：1 2 3 4 5</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">reverse</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>()); <span class="comment">// 反转整个vector</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n反转后：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) cout &lt;&lt; num &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：5 4 3 2 1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-反转字符串"><a href="#2-反转字符串" class="headerlink" title="2. 反转字符串"></a>2. 反转字符串</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;反转前：&quot;</span> &lt;&lt; str &lt;&lt; endl; <span class="comment">// 输出：hello</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">reverse</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>()); <span class="comment">// 反转字符串</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;反转后：&quot;</span> &lt;&lt; str &lt;&lt; endl; <span class="comment">// 输出：olleh</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-反转数组"><a href="#3-反转数组" class="headerlink" title="3. 反转数组"></a>3. 反转数组</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>&#125;;</span><br><span class="line">    <span class="type">int</span> n = <span class="built_in">sizeof</span>(arr)/<span class="built_in">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;反转前：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：10 20 30 40</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">reverse</span>(arr, arr + n); <span class="comment">// 数组的迭代器是指针，arr是起始，arr+n是结束</span></span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n反转后：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：40 30 20 10</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="五、使用注意-1"><a href="#五、使用注意-1" class="headerlink" title="五、使用注意"></a>五、使用注意</h2><ul>
+<li>若只需反转容器的部分区间，可调整<code>first</code>和<code>last</code>的位置（如<code>reverse(vec.begin()+1, vec.begin()+4)</code>反转第2到第4个元素）；</li>
+<li>对于不支持双向迭代器的容器（如<code>forward_list</code>），无法使用<code>reverse()</code>，需自行实现反转逻辑。</li>
+</ul>
+<h1 id="2-6-4-unique-函数（C-STL）"><a href="#2-6-4-unique-函数（C-STL）" class="headerlink" title="2.6.4 unique()函数（C++ STL）"></a>2.6.4 <code>unique()</code>函数（C++ STL）</h1><h2 id="一、核心定位-2"><a href="#一、核心定位-2" class="headerlink" title="一、核心定位"></a>一、核心定位</h2><p><code>unique()</code>是C++标准库中用于<strong>去除容器中相邻重复元素</strong>的函数，定义在<code>&lt;algorithm&gt;</code>头文件中。它的核心特点是“仅处理相邻重复元素”，而非全局去重。</p>
+<h2 id="二、函数原型与返回值"><a href="#二、函数原型与返回值" class="headerlink" title="二、函数原型与返回值"></a>二、函数原型与返回值</h2><p>函数以模板形式定义：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> ForwardIt&gt;</span></span><br><span class="line"><span class="function">ForwardIt <span class="title">unique</span><span class="params">(ForwardIt first, ForwardIt last)</span></span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>参数</strong>：<code>first</code>（起始迭代器）、<code>last</code>（结束迭代器），指定要处理的区间<code>[first, last)</code>；</li>
+<li><strong>返回值</strong>：返回一个迭代器，指向去重后容器中<strong>新的末尾位置</strong>（原容器长度不变，需配合<code>erase()</code>删除冗余元素）。</li>
+</ul>
+<h2 id="三、核心特性与注意事项-1"><a href="#三、核心特性与注意事项-1" class="headerlink" title="三、核心特性与注意事项"></a>三、核心特性与注意事项</h2><ol>
+<li><strong>仅去重相邻元素</strong>：<br><code>unique()</code>不会处理非相邻的重复元素，因此通常需要先对容器<strong>排序</strong>，使重复元素相邻，再调用<code>unique()</code>实现全局去重。</li>
+<li><strong>不改变容器长度</strong>：<br>它只是将不重复的元素移到容器前部，冗余元素留在尾部，需通过返回的迭代器调用<code>erase()</code>删除冗余部分。</li>
+<li><strong>支持前向迭代器</strong>：适用于所有支持前向迭代器的容器（如<code>vector</code>、<code>string</code>、数组等）。</li>
+</ol>
+<h2 id="四、使用示例-2"><a href="#四、使用示例-2" class="headerlink" title="四、使用示例"></a>四、使用示例</h2><h3 id="1-基础用法（先排序再去重）"><a href="#1-基础用法（先排序再去重）" class="headerlink" title="1. 基础用法（先排序再去重）"></a>1. 基础用法（先排序再去重）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;处理前：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) cout &lt;&lt; num &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：1 2 2 3 3 3 4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 排序（使重复元素相邻）</span></span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// 2. 去重，获取新末尾迭代器</span></span><br><span class="line">    <span class="keyword">auto</span> new_end = <span class="built_in">unique</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">// 3. 删除冗余元素</span></span><br><span class="line">    vec.<span class="built_in">erase</span>(new_end, vec.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n处理后：&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : vec) cout &lt;&lt; num &lt;&lt; <span class="string">&quot; &quot;</span>; <span class="comment">// 输出：1 2 3 4</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>如果不使用<code>vector</code>而是数组，记得这样写</strong></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">7</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="type">int</span> new_end = <span class="built_in">unique</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>()) - a;</span><br></pre></td></tr></table></figure>
+<h3 id="2-处理字符串"><a href="#2-处理字符串" class="headerlink" title="2. 处理字符串"></a>2. 处理字符串</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string str = <span class="string">&quot;aabbccddeeff&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;处理前：&quot;</span> &lt;&lt; str &lt;&lt; endl; <span class="comment">// 输出：aabbccddeeff</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> new_end = <span class="built_in">unique</span>(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>());</span><br><span class="line">    str.<span class="built_in">erase</span>(new_end, str.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;处理后：&quot;</span> &lt;&lt; str &lt;&lt; endl; <span class="comment">// 输出：abcdef</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="五、典型场景"><a href="#五、典型场景" class="headerlink" title="五、典型场景"></a>五、典型场景</h2><ul>
+<li><strong>全局去重</strong>：配合<code>sort()</code>使用，实现容器中所有重复元素的去重；</li>
+<li><strong>简化相邻重复序列</strong>：如压缩连续相同字符&#x2F;数字的序列（例：将<code>112233</code>转为<code>123</code>）。</li>
+</ul>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20251016203042_20_118.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鱼浩琳</div><div class="author-info-description">SCUer~</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yuhaolin-79"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yuhaolin-79" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:yuhaolin7.9@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/C%E8%AF%AD%E8%A8%80%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E7%9C%9F%E9%A2%98(%E4%B8%8A%E5%8D%8A%E9%83%A8%E5%88%86)/" title="C语言历年期末真题(上半部分)">C语言历年期末真题(上半部分)</a><time datetime="2025-12-24T12:56:34.000Z" title="Created 2025-12-24 20:56:34">2025-12-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" title="蓝桥杯备赛笔记（全章节整理）">蓝桥杯备赛笔记（全章节整理）</a><time datetime="2025-12-15T12:00:00.000Z" title="Created 2025-12-15 20:00:00">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/30/%E4%B8%AD%E5%80%BC%E5%AE%9A%E7%90%86/" title="三大微分中值定理">三大微分中值定理</a><time datetime="2025-11-30T13:32:48.000Z" title="Created 2025-11-30 21:32:48">2025-11-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/29/SCU_C_Programming_2025_fall/" title="C语言程序设计基础(2025秋)">C语言程序设计基础(2025秋)</a><time datetime="2025-11-29T09:42:54.000Z" title="Created 2025-11-29 17:42:54">2025-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/05/%E7%BF%81%E6%81%BAC%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="翁恺C语言学习笔记">翁恺C语言学习笔记</a><time datetime="2025-11-05T09:42:54.000Z" title="Created 2025-11-05 17:42:54">2025-11-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AB%9E%E8%B5%9B/"><span class="card-category-list-name">编程竞赛</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" style="font-size: 1.1em; color: #999">蓝桥杯</a> <a href="/tags/%E5%A4%87%E8%B5%9B%E7%AC%94%E8%AE%B0/" style="font-size: 1.1em; color: #999">备赛笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              December 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              November 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-02T13:11:50.740Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 鱼浩琳</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
