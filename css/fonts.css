@@ -1,0 +1,63 @@
+/* ============================================
+ * Custom Fonts for Article Body
+ * - English body: Times New Roman
+ * - Chinese body: Noto Serif SC (Source Han Serif via Google Fonts)
+ * - Code: JetBrains Mono (local woff2)
+ * ============================================ */
+
+/* Import Noto Serif SC from Google Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+/* JetBrains Mono - Regular */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainMono/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JetBrains Mono - Italic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainMono/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* JetBrains Mono - Bold */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainMono/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JetBrains Mono - Bold Italic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainMono/webfonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+ * Article Body Fonts
+ * Only target #article-container to avoid affecting
+ * sidebar, navigation, footer, and other UI elements.
+ * ============================================ */
+
+#article-container {
+  font-family: 'Times New Roman', 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+}
+
+/* Code blocks within articles */
+#article-container code,
+#article-container pre,
+#article-container figure.highlight,
+#article-container .highlight {
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', 'Courier New', monospace;
+}
